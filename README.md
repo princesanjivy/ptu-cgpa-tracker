@@ -8,7 +8,7 @@ Allows PTU students to calculate their CGPA, keep track of current semester’s 
 
 ## Team
 
-[Ashok]( https://github.com/Ashok-AK-lab 
+[Ashok]( https://github.com/Ashok-AK-lab )
 
 [Thamizh]( https://github.com/Thamizh813 )
 
