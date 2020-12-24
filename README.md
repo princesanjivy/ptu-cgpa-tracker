@@ -1,16 +1,18 @@
-# ptu_cgpa_tracker
+# PTU CGPA Tracker
 
-A new Flutter project.
+CGPA calculator and tracker for PTU students
 
-## Getting Started
+## What will it do?
 
-This project is a starting point for a Flutter application.
+Allows PTU students to calculate their CGPA, keep track of current semester’s CGPA so that it will give overall CGPA and current semester’s CGPA, in addition to that, department wise CGPA rank system overall & per semester.
 
-A few resources to get you started if this is your first Flutter project:
+## Team
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+[Ashok]( https://github.com/Ashok-AK-lab )
+[Thamizh]( https://github.com/Thamizh813 )
+[Yadava]( https://github.com/yadhavaprasanna )
+[Yuva]( https://githu.com/yuvachn )
+[Prince Sanjivy]( https://github.com/princesanjivy )
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
