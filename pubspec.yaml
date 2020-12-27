@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^1.1.1
+  lottie: ^0.7.0+1
+
 
 # The following section is specific to Flutter.
 flutter:
