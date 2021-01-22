@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "808254085978",
+    "project_id": "ptu-cgpa-tracker",
+    "storage_bucket": "ptu-cgpa-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808254085978:android:6b0349c609b590baa97163",
+        "android_client_info": {
+          "package_name": "com.princeappstudio.ptu_cgpa_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808254085978-634vvvuergg5g8cb7o4m5fc9n9t2et0d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.princeappstudio.ptu_cgpa_tracker",
+            "certificate_hash": "c66f434580eab8b9340554a94a20c23de85a9758"
+          }
+        },
+        {
+          "client_id": "808254085978-15573l92gi2vsl613a2q4htkrlugkgk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgOC_PV3OmYFbhyjd4YR3u9M0DuRGp2eg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808254085978-15573l92gi2vsl613a2q4htkrlugkgk8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

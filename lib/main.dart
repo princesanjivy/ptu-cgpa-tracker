@@ -18,7 +18,7 @@ class _MyRootAppState extends State<MyRootApp> {
       debugShowCheckedModeBanner: false,
       title: "PTU CGPA Tracker",
       theme: ThemeData(
-        textTheme: GoogleFonts.openSansTextTheme(
+        textTheme: GoogleFonts.poppinsTextTheme(
           Theme.of(context).textTheme,
         ),
       ),
