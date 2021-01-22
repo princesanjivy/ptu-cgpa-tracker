@@ -12,8 +12,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        ///TODO
-        child: Container(),
+        child: null,
       ),
     );
   }
