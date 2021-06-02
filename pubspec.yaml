@@ -9,8 +9,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^1.1.1
-  lottie: ^0.7.0+1
+  google_fonts: ^2.1.0
+  lottie: ^1.0.1
+  connectivity_wrapper: ^1.0.6
+  flutter_svg: ^0.22.0 
+  font_awesome_flutter: ^9.0.0
+  url_launcher: ^6.0.4
 
 
 # The following section is specific to Flutter.
@@ -19,4 +23,12 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
+    - assets/no.webp
+    - assets/net.json
+    - assets/1234.svg
+    - assets/undraw_Calculator_0evy.png
+    - assets/456.jpg
+    - assets/sanj.jpg
+    - assets/ashok.jpg
+    - assets/yuva.jpeg
+    - assets/yadav.jpg
