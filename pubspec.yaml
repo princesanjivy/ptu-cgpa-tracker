@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   google_fonts: ^2.1.0
   lottie: ^1.0.1
   connectivity_wrapper: ^1.0.6
@@ -17,7 +18,7 @@ dependencies:
   url_launcher: ^6.0.4
   cloud_firestore: ^2.2.1
   firebase_core: ^1.2.1
-
+  admob_flutter: ^1.0.1
 
 # The following section is specific to Flutter.
 flutter:
