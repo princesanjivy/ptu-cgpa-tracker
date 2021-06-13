@@ -2,33 +2,35 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ptu_cgpa_tracker/pages/grade.dart';
-import 'package:ptu_cgpa_tracker/pages/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(GradePage());
+
+  runApp(MyApp());
 }
 
-// class MyRootApp extends StatefulWidget {
-//   MyRootApp({Key key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  MyApp({Key key}) : super(key: key);
 
-//   @override
-//   _MyRootAppState createState() => _MyRootAppState();
-// }
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
-// class _MyRootAppState extends State<MyRootApp> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: "PTU CGPA Tracker",
-//       theme: ThemeData(
-//         textTheme: GoogleFonts.poppinsTextTheme(
-//           Theme.of(context).textTheme,
-//         ),
-//       ),
-//       home: GradePage(),
-//     );
-//   }
-// }
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "PTU CGPA Calculator",
+      theme: ThemeData(
+        textTheme: GoogleFonts.ralewayTextTheme(
+          Theme.of(context).textTheme,
+        ),
+        accentColor: Colors.deepOrangeAccent,
+        scaffoldBackgroundColor: Colors.black87,
+      ),
+      home: GradePage(),
+    );
+  }
+}
