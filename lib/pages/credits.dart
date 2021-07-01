@@ -27,7 +27,7 @@ class Developer extends StatelessWidget {
           style: GoogleFonts.raleway(
               textStyle: TextStyle(
             color: Colors.deepOrange,
-            fontSize: 17,
+            fontSize: 25,
             fontWeight: FontWeight.bold,
           )),
         ),

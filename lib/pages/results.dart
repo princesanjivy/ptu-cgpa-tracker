@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,8 +23,18 @@ class _ResultState extends State<Result> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Result"),
+        backgroundColor: Colors.white12,
+        title: Text(
+          "Result",
+          style: GoogleFonts.raleway(
+              textStyle: TextStyle(
+            color: Colors.deepOrange,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          )),
+        ),
       ),
+      backgroundColor: Colors.black,
     );
   }
 }
