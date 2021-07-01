@@ -1,34 +1,37 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:ptu_cgpa_tracker/pages/grade.dart';
-import 'package:ptu_cgpa_tracker/pages/home.dart';
+import 'package:ptu_cgpa_tracker/pages/homepage.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(GradePage());
+void main() {
+  runApp(MyApp());
 }
 
-// class MyRootApp extends StatefulWidget {
-//   MyRootApp({Key key}) : super(key: key);
-
-//   @override
-//   _MyRootAppState createState() => _MyRootAppState();
-// }
-
-// class _MyRootAppState extends State<MyRootApp> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: "PTU CGPA Tracker",
-//       theme: ThemeData(
-//         textTheme: GoogleFonts.poppinsTextTheme(
-//           Theme.of(context).textTheme,
-//         ),
-//       ),
-//       home: GradePage(),
-//     );
-//   }
-// }
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textTheme: Theme.of(context).textTheme.apply(
+              fontFamily: 'Raleway',
+            ),
+        checkboxTheme: CheckboxThemeData(
+          fillColor: MaterialStateColor.resolveWith(
+            (states) {
+              if (states.contains(MaterialState.selected)) {
+                return Colors
+                    .deepOrange; // the color when checkbox is selected;
+              }
+              return Colors.deepOrange; //the color when checkbox is unselected;
+            },
+          ),
+        ),
+      ),
+      home: SharedPreferenceDemo(),
+      /* initialRoute: '/h',
+      routes: {
+        '/h': (context) => Home(),
+        
+      },*/
+    );
+  }
+}
