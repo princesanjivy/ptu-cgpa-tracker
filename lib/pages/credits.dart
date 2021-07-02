@@ -164,6 +164,122 @@ class Developer extends StatelessWidget {
                       ),
                       child: Column(children: <Widget>[
                         ListTile(
+                          contentPadding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.deepOrange,
+                            radius: 45,
+                            child: CircleAvatar(
+                              radius: 26,
+                              backgroundImage: AssetImage('assets/yadav.jpg'),
+                            ),
+                          ),
+                          title: Padding(
+                            padding: EdgeInsets.fromLTRB(0, 20, 13, 10),
+                            child: Text(
+                              'YADHAVA PRASSANA  G',
+                              style: GoogleFonts.poppins(
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                            padding: EdgeInsets.fromLTRB(27, 10, 20, 10),
+                            child: Text.rich(TextSpan(
+                                text:
+                                    '" A Passionate coder who interested in  ',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white,
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: 'developing apps , ',
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.deepOrange,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: 'using ',
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: 'Flutter. "',
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.deepOrange,
+                                    ),
+                                  ),
+                                ]))),
+                        Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.only(left: 20, right: 10),
+                                child: IconButton(
+                                  icon: Icon(FontAwesomeIcons.instagram),
+                                  onPressed: () => launch(
+                                      'https://instagram.com/y.a.d.a.v.a_1618?igshid=g9a0nmhcn6t4'),
+                                  iconSize: 30,
+                                  color: Colors.deepOrange,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 14, right: 10),
+                                child: IconButton(
+                                  icon: Icon(FontAwesomeIcons.linkedinIn),
+                                  onPressed: () {},
+                                  iconSize: 30,
+                                  color: Colors.deepOrange,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 14, right: 10),
+                                child: IconButton(
+                                  icon: Icon(FontAwesomeIcons.github),
+                                  onPressed: () => launch(
+                                      'https://github.com/yadhavaprasanna'),
+                                  iconSize: 30,
+                                  color: Colors.deepOrange,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 14, right: 8),
+                                child: IconButton(
+                                  icon: Icon(FontAwesomeIcons.whatsapp),
+                                  onPressed: () => launch(
+                                      'https://api.whatsapp.com/send?phone= +916369591791&text=Hello Yadhava prassana'),
+                                  iconSize: 30,
+                                  color: Colors.deepOrange,
+                                ),
+                              ),
+                            ])
+                      ]),
+                    ),
+                  )),
+              Padding(
+                  padding:
+                      EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 25),
+                  child: Container(
+                    height: 230,
+                    width: 320,
+                    child: Card(
+                      color: Colors.white12,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: Column(children: <Widget>[
+                        ListTile(
                           contentPadding: EdgeInsets.fromLTRB(10, 20, 10, 10),
                           leading: CircleAvatar(
                             backgroundColor: Colors.deepOrange,
@@ -344,122 +460,6 @@ class Developer extends StatelessWidget {
                                   icon: Icon(FontAwesomeIcons.whatsapp),
                                   onPressed: () => launch(
                                       'https://api.whatsapp.com/send?phone= +916380032347&text=Hello Yuvachandiran'),
-                                  iconSize: 30,
-                                  color: Colors.deepOrange,
-                                ),
-                              ),
-                            ])
-                      ]),
-                    ),
-                  )),
-              Padding(
-                  padding:
-                      EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 25),
-                  child: Container(
-                    height: 230,
-                    width: 320,
-                    child: Card(
-                      color: Colors.white12,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Column(children: <Widget>[
-                        ListTile(
-                          contentPadding: EdgeInsets.fromLTRB(0, 20, 0, 10),
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.deepOrange,
-                            radius: 45,
-                            child: CircleAvatar(
-                              radius: 26,
-                              backgroundImage: AssetImage('assets/yadav.jpg'),
-                            ),
-                          ),
-                          title: Padding(
-                            padding: EdgeInsets.fromLTRB(0, 20, 13, 10),
-                            child: Text(
-                              'YADHAVA PRASSANA  G',
-                              style: GoogleFonts.poppins(
-                                fontSize: 15,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(27, 10, 20, 10),
-                            child: Text.rich(TextSpan(
-                                text:
-                                    '" A Passionate coder who interested in  ',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white,
-                                ),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: 'developing apps , ',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.deepOrange,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: 'using ',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: 'Flutter. "',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.deepOrange,
-                                    ),
-                                  ),
-                                ]))),
-                        Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.only(left: 20, right: 10),
-                                child: IconButton(
-                                  icon: Icon(FontAwesomeIcons.instagram),
-                                  onPressed: () => launch(
-                                      'https://instagram.com/y.a.d.a.v.a_1618?igshid=g9a0nmhcn6t4'),
-                                  iconSize: 30,
-                                  color: Colors.deepOrange,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 14, right: 10),
-                                child: IconButton(
-                                  icon: Icon(FontAwesomeIcons.linkedinIn),
-                                  onPressed: () {},
-                                  iconSize: 30,
-                                  color: Colors.deepOrange,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 14, right: 10),
-                                child: IconButton(
-                                  icon: Icon(FontAwesomeIcons.github),
-                                  onPressed: () => launch(
-                                      'https://github.com/yadhavaprasanna'),
-                                  iconSize: 30,
-                                  color: Colors.deepOrange,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 14, right: 8),
-                                child: IconButton(
-                                  icon: Icon(FontAwesomeIcons.whatsapp),
-                                  onPressed: () => launch(
-                                      'https://api.whatsapp.com/send?phone= +916369591791&text=Hello Yadhava prassana'),
                                   iconSize: 30,
                                   color: Colors.deepOrange,
                                 ),
