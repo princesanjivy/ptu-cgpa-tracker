@@ -237,8 +237,8 @@ class Developer extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.only(left: 14, right: 10),
                                 child: IconButton(
-                                  icon: Icon(FontAwesomeIcons.linkedinIn),
-                                  onPressed: () {},
+                                  icon: Icon(FontAwesomeIcons.mailBulk),
+                                  onPressed: _sendMailstoYadava,
                                   iconSize: 30,
                                   color: Colors.deepOrange,
                                 ),
@@ -440,7 +440,8 @@ class Developer extends StatelessWidget {
                                 padding: EdgeInsets.only(left: 14, right: 10),
                                 child: IconButton(
                                   icon: Icon(FontAwesomeIcons.linkedinIn),
-                                  onPressed: () {},
+                                  onPressed: () => launch(
+                                      "https://www.linkedin.com/mwlite/in/yuva-chn-1621b4201"),
                                   iconSize: 30,
                                   color: Colors.deepOrange,
                                 ),
@@ -449,7 +450,8 @@ class Developer extends StatelessWidget {
                                 padding: EdgeInsets.only(left: 14, right: 10),
                                 child: IconButton(
                                   icon: Icon(FontAwesomeIcons.github),
-                                  onPressed: () {},
+                                  onPressed: () =>
+                                      launch("https://github.com/yuvachn"),
                                   iconSize: 30,
                                   color: Colors.deepOrange,
                                 ),
@@ -570,5 +572,14 @@ class Developer extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+_sendMailstoYadava() async {
+  const url = 'mailto:yadavaprasanna16@gmail.com';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
