@@ -306,7 +306,7 @@ class _SharedPreferenceDemoState extends State<SharedPreferenceDemo> {
   List<DropdownMenuItem<String>> _dropDownItem() {
     List<String> ddl = [
       "ECE",
-      "CSC",
+      "CSE",
       "IT",
       "MEC",
       "CHE",
