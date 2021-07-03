@@ -7,11 +7,19 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ConnectivityAppWrapper(
-        app: MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Lottie Animation',
-      home: Scaffold(
+      home: Nonet(),
+    );
+  }
+}
+
+class Nonet extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ConnectivityAppWrapper(
+      app: Scaffold(
         backgroundColor: Colors.grey[850],
         body: SingleChildScrollView(
           child: ConnectivityWidgetWrapper(
@@ -56,6 +64,6 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-    ));
+    );
   }
 }
