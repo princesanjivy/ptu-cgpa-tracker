@@ -36,6 +36,16 @@ flutter:
     - assets/yuva.jpeg
     - assets/yadav.jpg
     - images/
+    - assets/trophy.json
+    - assets/congraluation.json
+    - assets/congsuccessbatch.json
+    - assets/finishingstudy.json
+    - assets/happystar.json
+    - assets/holdmyhand.json
+    - assets/progress.json
+    - assets/success1.json
+    - assets/winleader.json
+    - assets/success.json
 
   fonts:
     - family: Raleway
