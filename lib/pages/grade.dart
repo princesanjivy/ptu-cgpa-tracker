@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:ptu_cgpa_tracker/components/gradeselection.dart';
+import 'package:ptu_cgpa_tracker/pages/results.dart';
 
 class GradePage extends StatefulWidget {
   GradePage(Key key, this.dept, this.sem, this.honor, this.oe)
@@ -1645,22 +1646,28 @@ class _GradePageState extends State<GradePage> {
                           print("subsum   $subsum");
                           print("subcount  $subcount");
                         },
-                        child: Container(
-                          child: Center(
-                              child: Text(
-                            "Calculate CGPA",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w800,
-                                fontSize: size.height * 0.025,
-                                fontFamily: 'Raleway',
-                                letterSpacing: size.height * 0.002),
-                          )),
-                          width: size.width * 0.6,
-                          height: size.height * 0.06,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.deepOrange),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Result()));
+                          },
+                          child: Container(
+                            child: Center(
+                                child: Text(
+                              "Calculate CGPA",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: size.height * 0.025,
+                                  fontFamily: 'Raleway',
+                                  letterSpacing: size.height * 0.002),
+                            )),
+                            width: size.width * 0.6,
+                            height: size.height * 0.06,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.deepOrange),
+                          ),
                         ),
                       )
                     ],
