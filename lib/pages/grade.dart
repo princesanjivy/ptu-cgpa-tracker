@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:ptu_cgpa_tracker/components/gradeselection.dart';
+import 'package:ptu_cgpa_tracker/pages/results.dart';
 
 class GradePage extends StatefulWidget {
   GradePage(Key key, this.dept, this.sem, this.honor, this.oe)
@@ -1726,8 +1727,11 @@ class _GradePageState extends State<GradePage> {
                           print("subsum   $subsum");
                           print("subcount  $subcount");
                         },
-                        child: Padding(
-                          padding: EdgeInsets.all(15.0),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Result()));
+                          },
                           child: Container(
                             child: Center(
                                 child: Text(
