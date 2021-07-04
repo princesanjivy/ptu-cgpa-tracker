@@ -133,12 +133,14 @@ class _SharedPreferenceDemoState extends State<SharedPreferenceDemo> {
                   padding: EdgeInsets.only(left: 26, right: 26),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.white,
+                      color: Colors.deepOrange,
                     ),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Center(
                     child: DropdownButton<String>(
+                      dropdownColor: Colors.black.withOpacity(.85),
+                      elevation: 24,
                       hint: Text(
                         'Choose your Department',
                         style: TextStyle(
@@ -150,7 +152,7 @@ class _SharedPreferenceDemoState extends State<SharedPreferenceDemo> {
                         Icons.arrow_drop_down,
                         color: Colors.white,
                       ),
-                      iconSize: size.height * 0.03,
+                      iconSize: size.height * 0.04,
                       underline: SizedBox(),
                       isExpanded: true,
                       style: TextStyle(
@@ -182,16 +184,18 @@ class _SharedPreferenceDemoState extends State<SharedPreferenceDemo> {
                   padding: EdgeInsets.only(left: 26, right: 26),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.white,
+                      color: Colors.deepOrange,
                     ),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Center(
                     child: DropdownButton<String>(
+                      dropdownColor: Colors.black.withOpacity(.9),
+                      elevation: 24,
                       hint: Text(
                         'Choose your semester',
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.grey,
                             fontSize: size.height * .02,
                             fontFamily: 'raleway'),
                       ),
@@ -199,7 +203,7 @@ class _SharedPreferenceDemoState extends State<SharedPreferenceDemo> {
                         Icons.arrow_drop_down,
                         color: Colors.white,
                       ),
-                      iconSize: size.height * 0.03,
+                      iconSize: size.height * 0.04,
                       underline: SizedBox(),
                       isExpanded: true,
                       style: TextStyle(
@@ -243,7 +247,7 @@ class _SharedPreferenceDemoState extends State<SharedPreferenceDemo> {
                                 print(honor);
                               });
                             }),
-                        Text("Honor/minor",
+                        Text("Honor/Minor",
                             style: TextStyle(color: Colors.white)),
                       ],
                     ),
@@ -268,7 +272,7 @@ class _SharedPreferenceDemoState extends State<SharedPreferenceDemo> {
                 ),
               ),
               SizedBox(
-                height: size.height * 0.035,
+                height: size.height * 0.07,
               ),
               InkWell(
                 onTap: () {
@@ -282,7 +286,7 @@ class _SharedPreferenceDemoState extends State<SharedPreferenceDemo> {
                 },
                 child: Container(
                   height: size.height * 0.06,
-                  width: size.width * 0.37,
+                  width: size.width * 0.4,
                   decoration: BoxDecoration(
                       color: Colors.deepOrange,
                       borderRadius: BorderRadius.circular(15)),
@@ -365,13 +369,30 @@ class Home extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Text(
-                "Allow PEC students to calculate their CGPA,keep track of current semester's CGPA so that it will give overall CGPA and current sem's CGPA,in addition to that,department wise CGPA rank system overall & per semester",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'raleway',
-                    fontSize: size.height * 0.029,
-                    letterSpacing: size.height * 0.001),
+              child: Container(
+                padding: EdgeInsets.all(.2),
+                height: 150,
+                width: 280,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    gradient: LinearGradient(
+                        colors: [Colors.black, Colors.white],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight)),
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.black),
+                  child: Text(
+                    "PTU CGPA TRACKER helps the PTU students to calculate their current semester CGPA with just tapping the grades they secured.Make sure that you have checked the Honor/Minor and Open Elective check box if you have any before proceeding to calculate ",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'raleway',
+                        fontSize: size.height * 0.020,
+                        letterSpacing: size.height * 0.001),
+                  ),
+                ),
               ),
             ),
             Row(
@@ -393,6 +414,7 @@ class Home extends StatelessWidget {
                 Text(
                   '${data.sem}',
                   style: TextStyle(
+                      letterSpacing: 2,
                       shadows: <Shadow>[
                         Shadow(
                           offset: Offset(0, .5),
@@ -401,7 +423,7 @@ class Home extends StatelessWidget {
                         ),
                       ],
                       color: Colors.deepOrange,
-                      fontSize: size.height * .017,
+                      fontSize: size.height * .03,
                       fontFamily: 'raleway'),
                 ),
               ],
@@ -424,6 +446,7 @@ class Home extends StatelessWidget {
                   Text(
                     " ${data.dept}",
                     style: TextStyle(
+                        letterSpacing: 3,
                         shadows: <Shadow>[
                           Shadow(
                             offset: Offset(0, .5),
@@ -432,18 +455,18 @@ class Home extends StatelessWidget {
                           ),
                         ],
                         color: Colors.deepOrange,
-                        fontSize: size.height * .017,
+                        fontSize: size.height * .03,
                         fontFamily: 'raleway'),
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: Center(child: Image.asset('images/mee1.png')),
+              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
+              child: Center(child: Image.asset('images/Component.png')),
             ),
             SizedBox(
-              height: size.height * 0.06,
+              height: size.height * 0.04,
             ),
             InkWell(
               onTap: () {
@@ -454,7 +477,7 @@ class Home extends StatelessWidget {
               child: Container(
                 child: Center(
                     child: Text(
-                  "Calculate CGPA",
+                  "Proceed",
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w800,
@@ -462,10 +485,10 @@ class Home extends StatelessWidget {
                       fontFamily: 'Raleway',
                       letterSpacing: size.height * 0.002),
                 )),
-                width: size.width * 0.6,
+                width: size.width * 0.4,
                 height: size.height * 0.06,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(15),
                     color: Colors.deepOrange),
               ),
             )

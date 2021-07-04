@@ -143,705 +143,784 @@ class _GradePageState extends State<GradePage> {
                   child: Column(
                     children: [
                       //LISTVIEW BUILDEER WITHOUT HONOUR AND OPEN ELECTIVE
-                      Container(
-                        height: 500,
-                        width: 800,
-                        child: ListView.builder(
-                            itemCount: snapshots.data.docs.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Container(
-                                  padding: EdgeInsets.all(.2),
-                                  height: 100,
-                                  width: 340,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      gradient: LinearGradient(
-                                          colors: [Colors.black, Colors.white],
-                                          begin: Alignment.centerLeft,
-                                          end: Alignment.centerRight)),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 5),
+                        child: Container(
+                          height: size.height * .5,
+                          width: size.width * 1,
+                          decoration: BoxDecoration(),
+                          child: ListView.builder(
+                              // scrollDirection: Axis.horizontal,
+                              itemCount: snapshots.data.docs.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: EdgeInsets.all(size.height * .01),
                                   child: Container(
+                                    padding:
+                                        EdgeInsets.all(size.height * .0005),
+                                    height: snapshots.data.docs[index]['course']
+                                                .toString()
+                                                .length >
+                                            39
+                                        ? size.height * .15
+                                        : size.height * .125,
+                                    width: size.width * .9,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        color: Colors.black),
-                                    child: Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Container(
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                snapshots.data.docs[index]
-                                                    ['course'],
-                                                style: TextStyle(
-                                                  fontSize: 18,
-                                                  color: Colors.white,
+                                        borderRadius: BorderRadius.circular(
+                                            size.height * .02),
+                                        gradient: LinearGradient(
+                                            colors: [
+                                              Colors.black,
+                                              Colors.white
+                                            ],
+                                            begin: Alignment.centerLeft,
+                                            end: Alignment.centerRight)),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                              size.height * .02),
+                                          color: Colors.black),
+                                      child: Padding(
+                                        padding:
+                                            EdgeInsets.all(size.width * .03),
+                                        child: Container(
+                                          child: Column(
+                                            children: [
+                                              Container(
+                                                alignment: Alignment.centerLeft,
+                                                child: Text(
+                                                  snapshots.data.docs[index]
+                                                      ['course'],
+                                                  style: TextStyle(
+                                                    fontSize:
+                                                        size.height * .021,
+                                                    color: Colors.white,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              height: 15,
-                                            ),
-                                            Row(
-                                              children: [
-                                                SizedBox(
-                                                  width: 6,
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      x = 2;
-                                                      index1 = index;
+                                              SizedBox(
+                                                height: size.width * .04,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  SizedBox(
+                                                    width: size.width * .015,
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        x = 2;
+                                                        index1 = index;
 
-                                                      _isActiveS = true;
+                                                        _isActiveS = true;
 
-                                                      if (index == index1) {
-                                                        subject1[index] = 10.0;
-                                                        credit[index] = double
-                                                            .parse(snapshots
-                                                                    .data
-                                                                    .docs[index]
-                                                                ['credit']);
-                                                        score[index] = (credit[
-                                                                index] *
-                                                            subject1[index]);
-
-                                                        // _isActiveA = false;
-                                                        // _isActiveB = false;
-                                                        // _isActiveC = false;
-                                                        // _isActiveD = false;
-                                                        // _isActiveE = false;
-                                                        // _isActiveF = false;
-                                                        dummy();
-                                                      }
-                                                      print(credit[index]);
-                                                      print(double.parse(
-                                                              snapshots.data
+                                                        if (index == index1) {
+                                                          subject1[index] =
+                                                              10.0;
+                                                          credit[index] = double
+                                                              .parse(snapshots
+                                                                          .data
                                                                           .docs[
                                                                       index]
-                                                                  ['credit']) *
-                                                          subject1[index]);
-                                                      print("index=$index");
-                                                      print("index1= $index1");
-                                                    });
-                                                  },
-                                                  onDoubleTap: () {
-                                                    setState(() {
-                                                      index1 = index;
+                                                                  ['credit']);
+                                                          score[index] =
+                                                              (credit[index] *
+                                                                  subject1[
+                                                                      index]);
 
-                                                      _isActiveS = !_isActiveS;
-                                                      subject1[index] = 1.0;
-                                                      score[index] = 1.0;
-                                                      credit[index] = 0.0;
-                                                      if (index1 == index) {
+                                                          // _isActiveA = false;
+                                                          // _isActiveB = false;
+                                                          // _isActiveC = false;
+                                                          // _isActiveD = false;
+                                                          // _isActiveE = false;
+                                                          // _isActiveF = false;
+                                                          dummy();
+                                                        }
+                                                        print(credit[index]);
+                                                        print(double.parse(
+                                                                snapshots.data
+                                                                            .docs[
+                                                                        index][
+                                                                    'credit']) *
+                                                            subject1[index]);
+                                                        print("index=$index");
+                                                        print(
+                                                            "index1= $index1");
+                                                      });
+                                                    },
+                                                    onDoubleTap: () {
+                                                      setState(() {
+                                                        index1 = index;
+
                                                         _isActiveS =
                                                             !_isActiveS;
-                                                      }
+                                                        subject1[index] = 1.0;
+                                                        score[index] = 1.0;
+                                                        credit[index] = 0.0;
+                                                        if (index1 == index) {
+                                                          _isActiveS =
+                                                              !_isActiveS;
+                                                        }
 
-                                                      dummy();
-                                                    });
-                                                  },
-                                                  child: CircleAvatar(
-                                                    radius: 20,
-                                                    backgroundColor:
-                                                        _isActiveS &&
+                                                        dummy();
+                                                      });
+                                                    },
+                                                    child: CircleAvatar(
+                                                      radius:
+                                                          size.height * .026,
+                                                      backgroundColor: _isActiveS &&
+                                                              subject1[index] >
+                                                                  0.0 &&
+                                                              subject1[index] ==
+                                                                  10.0
+                                                          ? Colors.deepOrange
+                                                          : Colors.white,
+                                                      child: CircleAvatar(
+                                                        radius:
+                                                            size.height * .024,
+                                                        backgroundColor: _isActiveS &&
                                                                 subject1[
                                                                         index] >
                                                                     0.0 &&
                                                                 subject1[
                                                                         index] ==
                                                                     10.0
-                                                            ? Colors.deepOrange
-                                                            : Colors.white,
-                                                    child: CircleAvatar(
-                                                      radius: 19,
-                                                      backgroundColor: _isActiveS &&
-                                                              subject1[index] >
-                                                                  0.0 &&
-                                                              subject1[index] ==
-                                                                  10.0
-                                                          ? Colors.white
-                                                          : Colors.deepOrange,
-                                                      child: Text(
-                                                        "S",
-                                                        style: TextStyle(
-                                                            fontSize: 23,
-                                                            color: _isActiveS &&
-                                                                    subject1[
-                                                                            index] >
-                                                                        0.0 &&
-                                                                    subject1[
-                                                                            index] ==
-                                                                        10.0
-                                                                ? Colors
-                                                                    .deepOrange
-                                                                : Colors.white),
+                                                            ? Colors.white
+                                                            : Colors.deepOrange,
+                                                        child: Text(
+                                                          "S",
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  size.height *
+                                                                      .027,
+                                                              color: _isActiveS &&
+                                                                      subject1[
+                                                                              index] >
+                                                                          0.0 &&
+                                                                      subject1[
+                                                                              index] ==
+                                                                          10.0
+                                                                  ? Colors
+                                                                      .deepOrange
+                                                                  : Colors
+                                                                      .white),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  width: 6,
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      x = 2;
-                                                      index1 = index;
+                                                  SizedBox(
+                                                    width: size.width * .015,
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        x = 2;
+                                                        index1 = index;
 
-                                                      _isActiveA = true;
+                                                        _isActiveA = true;
 
-                                                      if (index == index1) {
-                                                        subject1[index] = 9;
-                                                        credit[index] = double
-                                                            .parse(snapshots
-                                                                    .data
-                                                                    .docs[index]
-                                                                ['credit']);
-                                                        score[index] = (credit[
-                                                                index] *
-                                                            subject1[index]);
+                                                        if (index == index1) {
+                                                          subject1[index] = 9;
+                                                          credit[index] = double
+                                                              .parse(snapshots
+                                                                          .data
+                                                                          .docs[
+                                                                      index]
+                                                                  ['credit']);
+                                                          score[index] =
+                                                              (credit[index] *
+                                                                  subject1[
+                                                                      index]);
 
-                                                        // _isActiveS = false;
-                                                        // _isActiveB = false;
-                                                        // _isActiveC = false;
-                                                        // _isActiveD = false;
-                                                        // _isActiveE = false;
-                                                        // _isActiveF = false;
-                                                        dummy();
-                                                      }
-                                                      print("index=$index");
-                                                      print("index1= $index1");
-                                                    });
-                                                  },
-                                                  onDoubleTap: () {
-                                                    setState(() {
-                                                      index1 = index;
+                                                          // _isActiveS = false;
+                                                          // _isActiveB = false;
+                                                          // _isActiveC = false;
+                                                          // _isActiveD = false;
+                                                          // _isActiveE = false;
+                                                          // _isActiveF = false;
+                                                          dummy();
+                                                        }
+                                                        print("index=$index");
+                                                        print(
+                                                            "index1= $index1");
+                                                      });
+                                                    },
+                                                    onDoubleTap: () {
+                                                      setState(() {
+                                                        index1 = index;
 
-                                                      _isActiveA = !_isActiveA;
-                                                      subject1[index] = 0;
-                                                      score[index] = 1.0;
-                                                      credit[index] = 0.0;
-                                                      if (index1 == index) {
                                                         _isActiveA =
                                                             !_isActiveA;
-                                                      }
+                                                        subject1[index] = 0;
+                                                        score[index] = 1.0;
+                                                        credit[index] = 0.0;
+                                                        if (index1 == index) {
+                                                          _isActiveA =
+                                                              !_isActiveA;
+                                                        }
 
-                                                      dummy();
-                                                    });
-                                                  },
-                                                  child: CircleAvatar(
-                                                    radius: 20,
-                                                    backgroundColor:
-                                                        _isActiveA &&
+                                                        dummy();
+                                                      });
+                                                    },
+                                                    child: CircleAvatar(
+                                                      radius:
+                                                          size.height * .026,
+                                                      backgroundColor: _isActiveA &&
+                                                              subject1[index] >
+                                                                  0 &&
+                                                              subject1[index] ==
+                                                                  9
+                                                          ? Colors.deepOrange
+                                                          : Colors.white,
+                                                      child: CircleAvatar(
+                                                        radius:
+                                                            size.height * .024,
+                                                        backgroundColor: _isActiveA &&
                                                                 subject1[
                                                                         index] >
                                                                     0 &&
                                                                 subject1[
                                                                         index] ==
                                                                     9
-                                                            ? Colors.deepOrange
-                                                            : Colors.white,
-                                                    child: CircleAvatar(
-                                                      radius: 19,
-                                                      backgroundColor: _isActiveA &&
-                                                              subject1[index] >
-                                                                  0 &&
-                                                              subject1[index] ==
-                                                                  9
-                                                          ? Colors.white
-                                                          : Colors.deepOrange,
-                                                      child: Text(
-                                                        "A",
-                                                        style: TextStyle(
-                                                            fontSize: 23,
-                                                            color: _isActiveA &&
-                                                                    subject1[
-                                                                            index] >
-                                                                        0 &&
-                                                                    subject1[
-                                                                            index] ==
-                                                                        9
-                                                                ? Colors
-                                                                    .deepOrange
-                                                                : Colors.white),
+                                                            ? Colors.white
+                                                            : Colors.deepOrange,
+                                                        child: Text(
+                                                          "A",
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  size.height *
+                                                                      .027,
+                                                              color: _isActiveA &&
+                                                                      subject1[
+                                                                              index] >
+                                                                          0 &&
+                                                                      subject1[
+                                                                              index] ==
+                                                                          9
+                                                                  ? Colors
+                                                                      .deepOrange
+                                                                  : Colors
+                                                                      .white),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  width: 6,
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      x = 2;
-                                                      index1 = index;
+                                                  SizedBox(
+                                                    width: size.width * .015,
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        x = 2;
+                                                        index1 = index;
 
-                                                      _isActiveB = true;
+                                                        _isActiveB = true;
 
-                                                      if (index == index1) {
-                                                        subject1[index] = 8;
-                                                        credit[index] = double
-                                                            .parse(snapshots
-                                                                    .data
-                                                                    .docs[index]
-                                                                ['credit']);
-                                                        score[index] = (credit[
-                                                                index] *
-                                                            subject1[index]);
+                                                        if (index == index1) {
+                                                          subject1[index] = 8;
+                                                          credit[index] = double
+                                                              .parse(snapshots
+                                                                          .data
+                                                                          .docs[
+                                                                      index]
+                                                                  ['credit']);
+                                                          score[index] =
+                                                              (credit[index] *
+                                                                  subject1[
+                                                                      index]);
 
-                                                        // _isActiveS = false;
-                                                        // _isActiveA = false;
-                                                        // _isActiveC = false;
-                                                        // _isActiveD = false;
-                                                        // _isActiveE = false;
-                                                        // _isActiveF = false;
-                                                        dummy();
-                                                      }
-                                                      print("index=$index");
-                                                      print("index1= $index1");
-                                                    });
-                                                  },
-                                                  onDoubleTap: () {
-                                                    setState(() {
-                                                      index1 = index;
+                                                          // _isActiveS = false;
+                                                          // _isActiveA = false;
+                                                          // _isActiveC = false;
+                                                          // _isActiveD = false;
+                                                          // _isActiveE = false;
+                                                          // _isActiveF = false;
+                                                          dummy();
+                                                        }
+                                                        print("index=$index");
+                                                        print(
+                                                            "index1= $index1");
+                                                      });
+                                                    },
+                                                    onDoubleTap: () {
+                                                      setState(() {
+                                                        index1 = index;
 
-                                                      _isActiveB = !_isActiveB;
-                                                      subject1[index] = 0;
-                                                      score[index] = 1.0;
-                                                      credit[index] = 0.0;
-                                                      if (index1 == index) {
                                                         _isActiveB =
                                                             !_isActiveB;
-                                                      }
+                                                        subject1[index] = 0;
+                                                        score[index] = 1.0;
+                                                        credit[index] = 0.0;
+                                                        if (index1 == index) {
+                                                          _isActiveB =
+                                                              !_isActiveB;
+                                                        }
 
-                                                      dummy();
-                                                    });
-                                                  },
-                                                  child: CircleAvatar(
-                                                    radius: 20,
-                                                    backgroundColor:
-                                                        _isActiveB &&
+                                                        dummy();
+                                                      });
+                                                    },
+                                                    child: CircleAvatar(
+                                                      radius:
+                                                          size.height * .026,
+                                                      backgroundColor: _isActiveB &&
+                                                              subject1[index] >
+                                                                  0 &&
+                                                              subject1[index] ==
+                                                                  8
+                                                          ? Colors.deepOrange
+                                                          : Colors.white,
+                                                      child: CircleAvatar(
+                                                        radius:
+                                                            size.height * .024,
+                                                        backgroundColor: _isActiveB &&
                                                                 subject1[
                                                                         index] >
                                                                     0 &&
                                                                 subject1[
                                                                         index] ==
                                                                     8
-                                                            ? Colors.deepOrange
-                                                            : Colors.white,
-                                                    child: CircleAvatar(
-                                                      radius: 19,
-                                                      backgroundColor: _isActiveB &&
-                                                              subject1[index] >
-                                                                  0 &&
-                                                              subject1[index] ==
-                                                                  8
-                                                          ? Colors.white
-                                                          : Colors.deepOrange,
-                                                      child: Text(
-                                                        "B",
-                                                        style: TextStyle(
-                                                            fontSize: 23,
-                                                            color: _isActiveB &&
-                                                                    subject1[
-                                                                            index] >
-                                                                        0 &&
-                                                                    subject1[
-                                                                            index] ==
-                                                                        8
-                                                                ? Colors
-                                                                    .deepOrange
-                                                                : Colors.white),
+                                                            ? Colors.white
+                                                            : Colors.deepOrange,
+                                                        child: Text(
+                                                          "B",
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  size.height *
+                                                                      .027,
+                                                              color: _isActiveB &&
+                                                                      subject1[
+                                                                              index] >
+                                                                          0 &&
+                                                                      subject1[
+                                                                              index] ==
+                                                                          8
+                                                                  ? Colors
+                                                                      .deepOrange
+                                                                  : Colors
+                                                                      .white),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  width: 6,
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      x = 2;
-                                                      index1 = index;
+                                                  SizedBox(
+                                                    width: size.width * .015,
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        x = 2;
+                                                        index1 = index;
 
-                                                      _isActiveC = true;
+                                                        _isActiveC = true;
 
-                                                      if (index == index1) {
-                                                        subject1[index] = 7;
-                                                        credit[index] = double
-                                                            .parse(snapshots
-                                                                    .data
-                                                                    .docs[index]
-                                                                ['credit']);
-                                                        score[index] = (credit[
-                                                                index] *
-                                                            subject1[index]);
+                                                        if (index == index1) {
+                                                          subject1[index] = 7;
+                                                          credit[index] = double
+                                                              .parse(snapshots
+                                                                          .data
+                                                                          .docs[
+                                                                      index]
+                                                                  ['credit']);
+                                                          score[index] =
+                                                              (credit[index] *
+                                                                  subject1[
+                                                                      index]);
 
-                                                        // _isActiveS = false;
-                                                        // _isActiveB = false;
-                                                        // _isActiveA = false;
-                                                        // _isActiveD = false;
-                                                        // _isActiveE = false;
-                                                        // _isActiveF = false;
-                                                        dummy();
-                                                      }
-                                                      print("index=$index");
-                                                      print("index1= $index1");
-                                                    });
-                                                  },
-                                                  onDoubleTap: () {
-                                                    setState(() {
-                                                      index1 = index;
+                                                          // _isActiveS = false;
+                                                          // _isActiveB = false;
+                                                          // _isActiveA = false;
+                                                          // _isActiveD = false;
+                                                          // _isActiveE = false;
+                                                          // _isActiveF = false;
+                                                          dummy();
+                                                        }
+                                                        print("index=$index");
+                                                        print(
+                                                            "index1= $index1");
+                                                      });
+                                                    },
+                                                    onDoubleTap: () {
+                                                      setState(() {
+                                                        index1 = index;
 
-                                                      _isActiveC = !_isActiveC;
-                                                      subject1[index] = 0;
-                                                      score[index] = 1.0;
-                                                      credit[index] = 0.0;
-                                                      if (index1 == index) {
                                                         _isActiveC =
                                                             !_isActiveC;
-                                                      }
+                                                        subject1[index] = 0;
+                                                        score[index] = 1.0;
+                                                        credit[index] = 0.0;
+                                                        if (index1 == index) {
+                                                          _isActiveC =
+                                                              !_isActiveC;
+                                                        }
 
-                                                      dummy();
-                                                    });
-                                                  },
-                                                  child: CircleAvatar(
-                                                    radius: 20,
-                                                    backgroundColor:
-                                                        _isActiveC &&
+                                                        dummy();
+                                                      });
+                                                    },
+                                                    child: CircleAvatar(
+                                                      radius:
+                                                          size.height * .026,
+                                                      backgroundColor: _isActiveC &&
+                                                              subject1[index] >
+                                                                  0 &&
+                                                              subject1[index] ==
+                                                                  7
+                                                          ? Colors.deepOrange
+                                                          : Colors.white,
+                                                      child: CircleAvatar(
+                                                        radius:
+                                                            size.height * .024,
+                                                        backgroundColor: _isActiveC &&
                                                                 subject1[
                                                                         index] >
                                                                     0 &&
                                                                 subject1[
                                                                         index] ==
                                                                     7
-                                                            ? Colors.deepOrange
-                                                            : Colors.white,
-                                                    child: CircleAvatar(
-                                                      radius: 19,
-                                                      backgroundColor: _isActiveC &&
-                                                              subject1[index] >
-                                                                  0 &&
-                                                              subject1[index] ==
-                                                                  7
-                                                          ? Colors.white
-                                                          : Colors.deepOrange,
-                                                      child: Text(
-                                                        "C",
-                                                        style: TextStyle(
-                                                            fontSize: 23,
-                                                            color: _isActiveC &&
-                                                                    subject1[
-                                                                            index] >
-                                                                        0 &&
-                                                                    subject1[
-                                                                            index] ==
-                                                                        7
-                                                                ? Colors
-                                                                    .deepOrange
-                                                                : Colors.white),
+                                                            ? Colors.white
+                                                            : Colors.deepOrange,
+                                                        child: Text(
+                                                          "C",
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  size.height *
+                                                                      .027,
+                                                              color: _isActiveC &&
+                                                                      subject1[
+                                                                              index] >
+                                                                          0 &&
+                                                                      subject1[
+                                                                              index] ==
+                                                                          7
+                                                                  ? Colors
+                                                                      .deepOrange
+                                                                  : Colors
+                                                                      .white),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  width: 6,
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      x = 2;
-                                                      index1 = index;
+                                                  SizedBox(
+                                                    width: size.width * .015,
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        x = 2;
+                                                        index1 = index;
 
-                                                      _isActiveD = true;
+                                                        _isActiveD = true;
 
-                                                      if (index == index1) {
-                                                        subject1[index] = 6;
-                                                        credit[index] = double
-                                                            .parse(snapshots
-                                                                    .data
-                                                                    .docs[index]
-                                                                ['credit']);
-                                                        score[index] = (credit[
-                                                                index] *
-                                                            subject1[index]);
+                                                        if (index == index1) {
+                                                          subject1[index] = 6;
+                                                          credit[index] = double
+                                                              .parse(snapshots
+                                                                          .data
+                                                                          .docs[
+                                                                      index]
+                                                                  ['credit']);
+                                                          score[index] =
+                                                              (credit[index] *
+                                                                  subject1[
+                                                                      index]);
 
-                                                        // _isActiveS = false;
-                                                        // _isActiveB = false;
-                                                        // _isActiveC = false;
-                                                        // _isActiveA = false;
-                                                        // _isActiveE = false;
-                                                        // _isActiveF = false;
-                                                        dummy();
-                                                      }
-                                                      print("index=$index");
-                                                      print("index1= $index1");
-                                                    });
-                                                  },
-                                                  onDoubleTap: () {
-                                                    setState(() {
-                                                      index1 = index;
+                                                          // _isActiveS = false;
+                                                          // _isActiveB = false;
+                                                          // _isActiveC = false;
+                                                          // _isActiveA = false;
+                                                          // _isActiveE = false;
+                                                          // _isActiveF = false;
+                                                          dummy();
+                                                        }
+                                                        print("index=$index");
+                                                        print(
+                                                            "index1= $index1");
+                                                      });
+                                                    },
+                                                    onDoubleTap: () {
+                                                      setState(() {
+                                                        index1 = index;
 
-                                                      _isActiveD = !_isActiveD;
-                                                      subject1[index] = 0;
-                                                      score[index] = 1.0;
-                                                      credit[index] = 0.0;
-                                                      if (index1 == index) {
                                                         _isActiveD =
                                                             !_isActiveD;
-                                                      }
+                                                        subject1[index] = 0;
+                                                        score[index] = 1.0;
+                                                        credit[index] = 0.0;
+                                                        if (index1 == index) {
+                                                          _isActiveD =
+                                                              !_isActiveD;
+                                                        }
 
-                                                      dummy();
-                                                    });
-                                                  },
-                                                  child: CircleAvatar(
-                                                    radius: 20,
-                                                    backgroundColor:
-                                                        _isActiveD &&
+                                                        dummy();
+                                                      });
+                                                    },
+                                                    child: CircleAvatar(
+                                                      radius:
+                                                          size.height * .026,
+                                                      backgroundColor: _isActiveD &&
+                                                              subject1[index] >
+                                                                  0 &&
+                                                              subject1[index] ==
+                                                                  6
+                                                          ? Colors.deepOrange
+                                                          : Colors.white,
+                                                      child: CircleAvatar(
+                                                        radius:
+                                                            size.height * .024,
+                                                        backgroundColor: _isActiveD &&
                                                                 subject1[
                                                                         index] >
                                                                     0 &&
                                                                 subject1[
                                                                         index] ==
                                                                     6
-                                                            ? Colors.deepOrange
-                                                            : Colors.white,
-                                                    child: CircleAvatar(
-                                                      radius: 19,
-                                                      backgroundColor: _isActiveD &&
-                                                              subject1[index] >
-                                                                  0 &&
-                                                              subject1[index] ==
-                                                                  6
-                                                          ? Colors.white
-                                                          : Colors.deepOrange,
-                                                      child: Text(
-                                                        "D",
-                                                        style: TextStyle(
-                                                            fontSize: 23,
-                                                            color: _isActiveD &&
-                                                                    subject1[
-                                                                            index] >
-                                                                        0 &&
-                                                                    subject1[
-                                                                            index] ==
-                                                                        6
-                                                                ? Colors
-                                                                    .deepOrange
-                                                                : Colors.white),
+                                                            ? Colors.white
+                                                            : Colors.deepOrange,
+                                                        child: Text(
+                                                          "D",
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  size.height *
+                                                                      .027,
+                                                              color: _isActiveD &&
+                                                                      subject1[
+                                                                              index] >
+                                                                          0 &&
+                                                                      subject1[
+                                                                              index] ==
+                                                                          6
+                                                                  ? Colors
+                                                                      .deepOrange
+                                                                  : Colors
+                                                                      .white),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  width: 6,
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      x = 2;
-                                                      index1 = index;
+                                                  SizedBox(
+                                                    width: size.width * .015,
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        x = 2;
+                                                        index1 = index;
 
-                                                      _isActiveE = true;
+                                                        _isActiveE = true;
 
-                                                      if (index == index1) {
-                                                        subject1[index] = 5;
-                                                        credit[index] = double
-                                                            .parse(snapshots
-                                                                    .data
-                                                                    .docs[index]
-                                                                ['credit']);
-                                                        score[index] = (credit[
-                                                                index] *
-                                                            subject1[index]);
+                                                        if (index == index1) {
+                                                          subject1[index] = 5;
+                                                          credit[index] = double
+                                                              .parse(snapshots
+                                                                          .data
+                                                                          .docs[
+                                                                      index]
+                                                                  ['credit']);
+                                                          score[index] =
+                                                              (credit[index] *
+                                                                  subject1[
+                                                                      index]);
 
-                                                        // _isActiveS = false;
-                                                        // _isActiveB = false;
-                                                        // _isActiveC = false;
-                                                        // _isActiveD = false;
-                                                        // _isActiveA = false;
-                                                        // _isActiveF = false;
-                                                        dummy();
-                                                      }
-                                                      print("index=$index");
-                                                      print("index1= $index1");
-                                                    });
-                                                  },
-                                                  onDoubleTap: () {
-                                                    setState(() {
-                                                      index1 = index;
+                                                          // _isActiveS = false;
+                                                          // _isActiveB = false;
+                                                          // _isActiveC = false;
+                                                          // _isActiveD = false;
+                                                          // _isActiveA = false;
+                                                          // _isActiveF = false;
+                                                          dummy();
+                                                        }
+                                                        print("index=$index");
+                                                        print(
+                                                            "index1= $index1");
+                                                      });
+                                                    },
+                                                    onDoubleTap: () {
+                                                      setState(() {
+                                                        index1 = index;
 
-                                                      _isActiveE = !_isActiveE;
-                                                      subject1[index] = 0;
-                                                      score[index] = 1.0;
-                                                      credit[index] = 0.0;
-                                                      if (index1 == index) {
                                                         _isActiveE =
                                                             !_isActiveE;
-                                                      }
+                                                        subject1[index] = 0;
+                                                        score[index] = 1.0;
+                                                        credit[index] = 0.0;
+                                                        if (index1 == index) {
+                                                          _isActiveE =
+                                                              !_isActiveE;
+                                                        }
 
-                                                      dummy();
-                                                    });
-                                                  },
-                                                  child: CircleAvatar(
-                                                    radius: 20,
-                                                    backgroundColor:
-                                                        _isActiveE &&
+                                                        dummy();
+                                                      });
+                                                    },
+                                                    child: CircleAvatar(
+                                                      radius:
+                                                          size.height * .026,
+                                                      backgroundColor: _isActiveE &&
+                                                              subject1[index] >
+                                                                  0 &&
+                                                              subject1[index] ==
+                                                                  5
+                                                          ? Colors.deepOrange
+                                                          : Colors.white,
+                                                      child: CircleAvatar(
+                                                        radius:
+                                                            size.height * .024,
+                                                        backgroundColor: _isActiveE &&
                                                                 subject1[
                                                                         index] >
                                                                     0 &&
                                                                 subject1[
                                                                         index] ==
                                                                     5
-                                                            ? Colors.deepOrange
-                                                            : Colors.white,
-                                                    child: CircleAvatar(
-                                                      radius: 19,
-                                                      backgroundColor: _isActiveE &&
-                                                              subject1[index] >
-                                                                  0 &&
-                                                              subject1[index] ==
-                                                                  5
-                                                          ? Colors.white
-                                                          : Colors.deepOrange,
-                                                      child: Text(
-                                                        "E",
-                                                        style: TextStyle(
-                                                            fontSize: 23,
-                                                            color: _isActiveE &&
-                                                                    subject1[
-                                                                            index] >
-                                                                        0 &&
-                                                                    subject1[
-                                                                            index] ==
-                                                                        5
-                                                                ? Colors
-                                                                    .deepOrange
-                                                                : Colors.white),
+                                                            ? Colors.white
+                                                            : Colors.deepOrange,
+                                                        child: Text(
+                                                          "E",
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  size.height *
+                                                                      .027,
+                                                              color: _isActiveE &&
+                                                                      subject1[
+                                                                              index] >
+                                                                          0 &&
+                                                                      subject1[
+                                                                              index] ==
+                                                                          5
+                                                                  ? Colors
+                                                                      .deepOrange
+                                                                  : Colors
+                                                                      .white),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  width: 6,
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      x = 2;
-                                                      index1 = index;
+                                                  SizedBox(
+                                                    width: size.width * .015,
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        x = 2;
+                                                        index1 = index;
 
-                                                      _isActiveF = true;
+                                                        _isActiveF = true;
 
-                                                      if (index == index1) {
-                                                        subject1[index] = 0;
-                                                        credit[index] = double
-                                                            .parse(snapshots
-                                                                    .data
-                                                                    .docs[index]
-                                                                ['credit']);
-                                                        score[index] = (credit[
-                                                                index] *
-                                                            subject1[index]);
+                                                        if (index == index1) {
+                                                          subject1[index] = 0;
+                                                          credit[index] = double
+                                                              .parse(snapshots
+                                                                          .data
+                                                                          .docs[
+                                                                      index]
+                                                                  ['credit']);
+                                                          score[index] =
+                                                              (credit[index] *
+                                                                  subject1[
+                                                                      index]);
 
-                                                        // _isActiveS = false;
-                                                        // _isActiveB = false;
-                                                        // _isActiveC = false;
-                                                        // _isActiveD = false;
-                                                        // _isActiveE = false;
-                                                        // _isActiveA = false;
-                                                        dummy();
-                                                      }
-                                                      print("index=$index");
-                                                      print("index1= $index1");
-                                                    });
-                                                  },
-                                                  onDoubleTap: () {
-                                                    setState(() {
-                                                      index1 = index;
+                                                          // _isActiveS = false;
+                                                          // _isActiveB = false;
+                                                          // _isActiveC = false;
+                                                          // _isActiveD = false;
+                                                          // _isActiveE = false;
+                                                          // _isActiveA = false;
+                                                          dummy();
+                                                        }
+                                                        print("index=$index");
+                                                        print(
+                                                            "index1= $index1");
+                                                      });
+                                                    },
+                                                    onDoubleTap: () {
+                                                      setState(() {
+                                                        index1 = index;
 
-                                                      _isActiveF = !_isActiveF;
-                                                      subject1[index] = 0;
-                                                      score[index] = 1.0;
-                                                      credit[index] = 0.0;
-                                                      if (index1 == index) {
                                                         _isActiveF =
                                                             !_isActiveF;
-                                                      }
+                                                        subject1[index] = 0;
+                                                        score[index] = 1.0;
+                                                        credit[index] = 0.0;
+                                                        if (index1 == index) {
+                                                          _isActiveF =
+                                                              !_isActiveF;
+                                                        }
 
-                                                      dummy();
-                                                    });
-                                                  },
-                                                  child: CircleAvatar(
-                                                    radius: 20,
-                                                    backgroundColor:
-                                                        _isActiveF &&
-                                                                subject1[
-                                                                        index] ==
-                                                                    0
-                                                            ? Colors.deepOrange
-                                                            : Colors.white,
+                                                        dummy();
+                                                      });
+                                                    },
                                                     child: CircleAvatar(
-                                                      radius: 19,
+                                                      radius:
+                                                          size.height * .026,
                                                       backgroundColor:
                                                           _isActiveF &&
                                                                   subject1[
                                                                           index] ==
                                                                       0
-                                                              ? Colors.white
-                                                              : Colors
-                                                                  .deepOrange,
-                                                      child: Text(
-                                                        "F",
-                                                        style: TextStyle(
-                                                            fontSize: 23,
-                                                            color: _isActiveF &&
+                                                              ? Colors
+                                                                  .deepOrange
+                                                              : Colors.white,
+                                                      child: CircleAvatar(
+                                                        radius:
+                                                            size.height * .024,
+                                                        backgroundColor:
+                                                            _isActiveF &&
                                                                     subject1[
                                                                             index] ==
                                                                         0
-                                                                ? Colors
-                                                                    .deepOrange
-                                                                : Colors.white),
+                                                                ? Colors.white
+                                                                : Colors
+                                                                    .deepOrange,
+                                                        child: Text(
+                                                          "F",
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  size.height *
+                                                                      .027,
+                                                              color: _isActiveF &&
+                                                                      subject1[
+                                                                              index] ==
+                                                                          0
+                                                                  ? Colors
+                                                                      .deepOrange
+                                                                  : Colors
+                                                                      .white),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          ],
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              );
-                            }),
+                                );
+                              }),
+                        ),
                       ),
                       //HONOR
                       if (widget.honor == true)
                         Padding(
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(size.height * .01),
                           child: Container(
-                            padding: EdgeInsets.all(.2),
-                            height: 100,
-                            width: 340,
+                            padding: EdgeInsets.all(size.height * .0005),
+                            height: size.height * .125,
+                            width: size.height * .9,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius:
+                                    BorderRadius.circular(size.height * .02),
                                 gradient: LinearGradient(
                                     colors: [Colors.black, Colors.white],
                                     begin: Alignment.centerLeft,
                                     end: Alignment.centerRight)),
                             child: Container(
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
+                                  borderRadius:
+                                      BorderRadius.circular(size.height * .02),
                                   color: Colors.black),
                               child: Padding(
-                                padding: EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(size.width * .03),
                                 child: Container(
                                   child: Column(
                                     children: [
@@ -850,18 +929,18 @@ class _GradePageState extends State<GradePage> {
                                         child: Text(
                                           'Honour/Minor',
                                           style: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: size.height * .021,
                                             color: Colors.white,
                                           ),
                                         ),
                                       ),
                                       SizedBox(
-                                        height: 15,
+                                        height: size.width * .04,
                                       ),
                                       Row(
                                         children: [
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .01,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -878,14 +957,14 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveS &&
                                                       honor > 0 &&
                                                       honor == 10
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveS &&
                                                         honor > 0 &&
                                                         honor == 10
@@ -922,14 +1001,14 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveA &&
                                                       honor > 0 &&
                                                       honor == 9
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveA &&
                                                         honor > 0 &&
                                                         honor == 9
@@ -949,7 +1028,7 @@ class _GradePageState extends State<GradePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .015,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -966,14 +1045,14 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveB &&
                                                       honor > 0 &&
                                                       honor == 8
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveB &&
                                                         honor > 0 &&
                                                         honor == 8
@@ -993,7 +1072,7 @@ class _GradePageState extends State<GradePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .015,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -1010,14 +1089,14 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveC &&
                                                       honor > 0 &&
                                                       honor == 7
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveC &&
                                                         honor > 0 &&
                                                         honor == 7
@@ -1037,7 +1116,7 @@ class _GradePageState extends State<GradePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .015,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -1056,14 +1135,14 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveD &&
                                                       honor > 0 &&
                                                       honor == 6
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveD &&
                                                         honor > 0 &&
                                                         honor == 6
@@ -1083,7 +1162,7 @@ class _GradePageState extends State<GradePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .015,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -1100,14 +1179,14 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveE &&
                                                       honor > 0 &&
                                                       honor == 5
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveE &&
                                                         honor > 0 &&
                                                         honor == 5
@@ -1127,7 +1206,7 @@ class _GradePageState extends State<GradePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .015,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -1144,13 +1223,13 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor:
                                                   _isActiveF && honor == 0
                                                       ? Colors.deepOrange
                                                       : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor:
                                                     _isActiveF && honor == 0
                                                         ? Colors.white
@@ -1180,23 +1259,25 @@ class _GradePageState extends State<GradePage> {
                       ,
                       if (widget.oe == true)
                         Padding(
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(size.height * .01),
                           child: Container(
-                            padding: EdgeInsets.all(.2),
-                            height: 100,
-                            width: 340,
+                            padding: EdgeInsets.all(size.height * .0005),
+                            height: size.height * .125,
+                            width: size.height * .9,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius:
+                                    BorderRadius.circular(size.height * .02),
                                 gradient: LinearGradient(
                                     colors: [Colors.black, Colors.white],
                                     begin: Alignment.centerLeft,
                                     end: Alignment.centerRight)),
                             child: Container(
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
+                                  borderRadius:
+                                      BorderRadius.circular(size.height * .02),
                                   color: Colors.black),
                               child: Padding(
-                                padding: EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(size.height * .01),
                                 child: Container(
                                   child: Column(
                                     children: [
@@ -1205,18 +1286,18 @@ class _GradePageState extends State<GradePage> {
                                         child: Text(
                                           'Open Elective',
                                           style: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: size.height * .021,
                                             color: Colors.white,
                                           ),
                                         ),
                                       ),
                                       SizedBox(
-                                        height: 15,
+                                        height: size.height * .02,
                                       ),
                                       Row(
                                         children: [
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .015,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -1233,14 +1314,14 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveS &&
                                                       openelective > 0 &&
                                                       openelective == 10
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveS &&
                                                         openelective > 0 &&
                                                         openelective == 10
@@ -1261,7 +1342,7 @@ class _GradePageState extends State<GradePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .015,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -1278,14 +1359,14 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveA &&
                                                       openelective > 0 &&
                                                       openelective == 9
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveA &&
                                                         openelective > 0 &&
                                                         openelective == 9
@@ -1306,7 +1387,7 @@ class _GradePageState extends State<GradePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .015,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -1323,14 +1404,14 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveB &&
                                                       openelective > 0 &&
                                                       openelective == 8
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveB &&
                                                         openelective > 0 &&
                                                         openelective == 8
@@ -1351,7 +1432,7 @@ class _GradePageState extends State<GradePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .015,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -1368,14 +1449,14 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveC &&
                                                       openelective > 0 &&
                                                       openelective == 7
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveC &&
                                                         openelective > 0 &&
                                                         openelective == 7
@@ -1396,7 +1477,7 @@ class _GradePageState extends State<GradePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .015,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -1415,14 +1496,14 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveD &&
                                                       openelective > 0 &&
                                                       openelective == 6
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveD &&
                                                         openelective > 0 &&
                                                         openelective == 6
@@ -1443,7 +1524,7 @@ class _GradePageState extends State<GradePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .015,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -1460,14 +1541,14 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveE &&
                                                       openelective > 0 &&
                                                       openelective == 5
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveE &&
                                                         openelective > 0 &&
                                                         openelective == 5
@@ -1488,7 +1569,7 @@ class _GradePageState extends State<GradePage> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 6,
+                                            width: size.width * .015,
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -1505,13 +1586,13 @@ class _GradePageState extends State<GradePage> {
                                               });
                                             },
                                             child: CircleAvatar(
-                                              radius: 20,
+                                              radius: size.height * .026,
                                               backgroundColor: _isActiveF &&
                                                       openelective == 0
                                                   ? Colors.deepOrange
                                                   : Colors.white,
                                               child: CircleAvatar(
-                                                radius: 19,
+                                                radius: size.height * .024,
                                                 backgroundColor: _isActiveF &&
                                                         openelective == 0
                                                     ? Colors.white
@@ -1639,28 +1720,31 @@ class _GradePageState extends State<GradePage> {
                               creditsum = 0.0;
                             });
 
-                            print("cgpa      $cgpa");
+                            print(cgpa.toStringAsFixed(2));
                           }
                           print("creditsum    $creditsum");
                           print("subsum   $subsum");
                           print("subcount  $subcount");
                         },
-                        child: Container(
-                          child: Center(
-                              child: Text(
-                            "Calculate CGPA",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w800,
-                                fontSize: size.height * 0.025,
-                                fontFamily: 'Raleway',
-                                letterSpacing: size.height * 0.002),
-                          )),
-                          width: size.width * 0.6,
-                          height: size.height * 0.06,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.deepOrange),
+                        child: Padding(
+                          padding: EdgeInsets.all(15.0),
+                          child: Container(
+                            child: Center(
+                                child: Text(
+                              "Calculate",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: size.height * 0.025,
+                                  fontFamily: 'Raleway',
+                                  letterSpacing: size.height * 0.002),
+                            )),
+                            width: size.width * 0.4,
+                            height: size.height * 0.06,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.deepOrange),
+                          ),
                         ),
                       )
                     ],
