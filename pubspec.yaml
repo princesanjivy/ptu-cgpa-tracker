@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
   google_fonts: ^2.1.0
   lottie: ^1.0.1
   connectivity_wrapper: ^1.0.6
@@ -18,7 +17,8 @@ dependencies:
   url_launcher: ^6.0.4
   cloud_firestore: ^2.2.1
   firebase_core: ^1.2.1
-  admob_flutter: ^1.0.1
+  shared_preferences: ^2.0.6
+
 
 # The following section is specific to Flutter.
 flutter:
@@ -35,3 +35,20 @@ flutter:
     - assets/ashok.jpg
     - assets/yuva.jpeg
     - assets/yadav.jpg
+    - images/
+    - assets/trophy.json
+    - assets/congraluation.json
+    - assets/congsuccessbatch.json
+    - assets/finishingstudy.json
+    - assets/happystar.json
+    - assets/holdmyhand.json
+    - assets/progress.json
+    - assets/success1.json
+    - assets/winleader.json
+    - assets/success.json
+
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: fonts/Raleway-Regular.ttf
+    
