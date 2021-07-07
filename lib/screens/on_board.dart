@@ -1,38 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ptu_cgpa_tracker/pages/grade.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ptu_cgpa_tracker/screens/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        textTheme: Theme.of(context).textTheme.apply(
-              fontFamily: 'Raleway',
-            ),
-        checkboxTheme: CheckboxThemeData(
-          fillColor: MaterialStateColor.resolveWith(
-            (states) {
-              if (states.contains(MaterialState.selected)) {
-                return Colors
-                    .deepOrange; // the color when checkbox is selected;
-              }
-              return Colors.deepOrange; //the color when checkbox is unselected;
-            },
-          ),
-        ),
-      ),
-      home: SharedPreferenceDemo(),
-      /* initialRoute: '/h',
-      routes: {
-        '/h': (context) => Home(),
-        
-      },*/
-    );
-  }
-}
 
 class Data {
   final String dept;
@@ -43,14 +12,14 @@ class Data {
   Data(this.dept, this.sem, this.honor, this.oe);
 }
 
-class SharedPreferenceDemo extends StatefulWidget {
-  SharedPreferenceDemo({Key key}) : super(key: key);
+class OnBoard extends StatefulWidget {
+  OnBoard({Key key}) : super(key: key);
 
   @override
-  _SharedPreferenceDemoState createState() => _SharedPreferenceDemoState();
+  _OnBoardState createState() => _OnBoardState();
 }
 
-class _SharedPreferenceDemoState extends State<SharedPreferenceDemo> {
+class _OnBoardState extends State<OnBoard> {
   String choosesem;
   String choosedept;
   SharedPreferences prefs;
@@ -99,30 +68,37 @@ class _SharedPreferenceDemoState extends State<SharedPreferenceDemo> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.deepOrange,
           title: Text(
             'PTU GPA TRACKER',
             style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'Raleway',
-                fontSize: size.height * 0.027,
-                fontWeight: FontWeight.bold),
+              color: Colors.white,
+              fontFamily: 'Raleway',
+              fontSize: size.height * 0.027,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1.5,
+            ),
           ),
         ),
         body: SingleChildScrollView(
           child: Column(
-            //  mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 28),
-                child: Center(child: Image.asset('images/mee1.png')),
-              ),
               SizedBox(
-                height: size.height * 0.02,
+                height: 32,
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 28),
+                child: SvgPicture.asset(
+                  "assets/onBoard.svg",
+                  fit: BoxFit.contain,
+                  height: 200,
+                  width: 200,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -276,13 +252,13 @@ class _SharedPreferenceDemoState extends State<SharedPreferenceDemo> {
               ),
               InkWell(
                 onTap: () {
-                  print(choosedept);
-                  print(choosesem);
-                  print("oe $oe");
-                  print("honor $honor");
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
-                          Home(data: Data(choosedept, choosesem, honor, oe))));
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => Home(
+                        data: Data(choosedept, choosesem, honor, oe),
+                      ),
+                    ),
+                  );
                 },
                 child: Container(
                   height: size.height * 0.06,
@@ -334,167 +310,5 @@ class _SharedPreferenceDemoState extends State<SharedPreferenceDemo> {
               child: Text(value),
             ))
         .toList();
-  }
-}
-
-class Home extends StatelessWidget {
-  final Data data;
-
-  Home({@required this.data, Key key}) : super(key: key);
-  void initState() {
-    print("nextpage=${data.dept}");
-
-    // _readsem();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: Text(
-          'PTU GPA TRACKER',
-          style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Raleway',
-              fontSize: size.height * 0.027,
-              fontWeight: FontWeight.bold),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Container(
-                padding: EdgeInsets.all(.2),
-                height: 150,
-                width: 280,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(
-                        colors: [Colors.black, Colors.white],
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight)),
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.black),
-                  child: Text(
-                    "PTU CGPA TRACKER helps the PTU students to calculate their current semester CGPA with just tapping the grades they secured.Make sure that you have checked the Honor/Minor and Open Elective check box if you have any before proceeding to calculate ",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'raleway',
-                        fontSize: size.height * 0.020,
-                        letterSpacing: size.height * 0.001),
-                  ),
-                ),
-              ),
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: Text(
-                    'Semester :',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'raleway',
-                        fontSize: size.height * 0.025,
-                        letterSpacing: size.height * 0.001),
-                  ),
-                ),
-                SizedBox(
-                  width: size.width * 0.03,
-                ),
-                Text(
-                  '${data.sem}',
-                  style: TextStyle(
-                      letterSpacing: 2,
-                      shadows: <Shadow>[
-                        Shadow(
-                          offset: Offset(0, .5),
-                          blurRadius: 1.0,
-                          color: Colors.white,
-                        ),
-                      ],
-                      color: Colors.deepOrange,
-                      fontSize: size.height * .03,
-                      fontFamily: 'raleway'),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, top: 10),
-              child: Row(
-                children: [
-                  Text(
-                    'Department :',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'raleway',
-                        fontSize: size.height * 0.025,
-                        letterSpacing: size.height * 0.001),
-                  ),
-                  SizedBox(
-                    width: size.width * 0.03,
-                  ),
-                  Text(
-                    " ${data.dept}",
-                    style: TextStyle(
-                        letterSpacing: 3,
-                        shadows: <Shadow>[
-                          Shadow(
-                            offset: Offset(0, .5),
-                            blurRadius: 1.0,
-                            color: Colors.white,
-                          ),
-                        ],
-                        color: Colors.deepOrange,
-                        fontSize: size.height * .03,
-                        fontFamily: 'raleway'),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
-              child: Center(child: Image.asset('images/Component.png')),
-            ),
-            SizedBox(
-              height: size.height * 0.04,
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => GradePage(
-                        key, data.dept, data.sem, data.honor, data.oe)));
-              },
-              child: Container(
-                child: Center(
-                    child: Text(
-                  "Proceed",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                      fontSize: size.height * 0.025,
-                      fontFamily: 'Raleway',
-                      letterSpacing: size.height * 0.002),
-                )),
-                width: size.width * 0.4,
-                height: size.height * 0.06,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.deepOrange),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
   }
 }

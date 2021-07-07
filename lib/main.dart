@@ -1,7 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:ptu_cgpa_tracker/pages/homepage.dart';
+import 'package:ptu_cgpa_tracker/screens/on_board.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
@@ -11,27 +15,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        textTheme: Theme.of(context).textTheme.apply(
-              fontFamily: 'Raleway',
-            ),
+        scaffoldBackgroundColor: Colors.black87,
+        textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Raleway'),
+        accentColor: Colors.deepOrangeAccent,
         checkboxTheme: CheckboxThemeData(
           fillColor: MaterialStateColor.resolveWith(
             (states) {
               if (states.contains(MaterialState.selected)) {
-                return Colors
-                    .deepOrange; // the color when checkbox is selected;
+                return Colors.deepOrange;
               }
-              return Colors.deepOrange; //the color when checkbox is unselected;
+              return Colors.deepOrange;
             },
           ),
         ),
       ),
-      home: SharedPreferenceDemo(),
-      /* initialRoute: '/h',
-      routes: {
-        '/h': (context) => Home(),
-        
-      },*/
+      home: OnBoard(),
+
+      /// Intro has to come!!!
     );
   }
 }
