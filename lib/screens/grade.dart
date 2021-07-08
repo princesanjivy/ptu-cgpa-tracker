@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:ptu_cgpa_tracker/screens/result.dart';
 
 class GradePage extends StatefulWidget {
   GradePage(Key key, this.dept, this.sem, this.honor, this.oe)
@@ -31,6 +32,8 @@ class _GradePageState extends State<GradePage> {
   double creditsum = 0.0;
 
   double cgpa = 0;
+
+  double cgpa1 = 0;
 
   double subsum = 0.0;
 
@@ -101,12 +104,6 @@ class _GradePageState extends State<GradePage> {
     0.0,
   ];
 
-  void dummy() {
-    print("subject1=$subject1");
-    print("score  $score");
-    print("credit  $credit");
-  }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -146,7 +143,10 @@ class _GradePageState extends State<GradePage> {
               children: [
                 //LISTVIEW BUILDEER WITHOUT HONOUR AND OPEN ELECTIVE
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
+                  padding: EdgeInsets.only(
+                    top: 10,
+                    bottom: 5,
+                  ),
                   child: Container(
                     height: size.height * .5,
                     width: size.width * 1,
@@ -227,15 +227,8 @@ class _GradePageState extends State<GradePage> {
                                                     // _isActiveD = false;
                                                     // _isActiveE = false;
                                                     // _isActiveF = false;
-                                                    dummy();
+
                                                   }
-                                                  print(credit[index]);
-                                                  print(double.parse(snapshots
-                                                              .data.docs[index]
-                                                          ['credit']) *
-                                                      subject1[index]);
-                                                  print("index=$index");
-                                                  print("index1= $index1");
                                                 });
                                               },
                                               onDoubleTap: () {
@@ -249,8 +242,6 @@ class _GradePageState extends State<GradePage> {
                                                   if (index1 == index) {
                                                     _isActiveS = !_isActiveS;
                                                   }
-
-                                                  dummy();
                                                 });
                                               },
                                               child: CircleAvatar(
@@ -315,10 +306,8 @@ class _GradePageState extends State<GradePage> {
                                                     // _isActiveD = false;
                                                     // _isActiveE = false;
                                                     // _isActiveF = false;
-                                                    dummy();
+
                                                   }
-                                                  print("index=$index");
-                                                  print("index1= $index1");
                                                 });
                                               },
                                               onDoubleTap: () {
@@ -332,8 +321,6 @@ class _GradePageState extends State<GradePage> {
                                                   if (index1 == index) {
                                                     _isActiveA = !_isActiveA;
                                                   }
-
-                                                  dummy();
                                                 });
                                               },
                                               child: CircleAvatar(
@@ -396,10 +383,8 @@ class _GradePageState extends State<GradePage> {
                                                     // _isActiveD = false;
                                                     // _isActiveE = false;
                                                     // _isActiveF = false;
-                                                    dummy();
+
                                                   }
-                                                  print("index=$index");
-                                                  print("index1= $index1");
                                                 });
                                               },
                                               onDoubleTap: () {
@@ -413,8 +398,6 @@ class _GradePageState extends State<GradePage> {
                                                   if (index1 == index) {
                                                     _isActiveB = !_isActiveB;
                                                   }
-
-                                                  dummy();
                                                 });
                                               },
                                               child: CircleAvatar(
@@ -477,10 +460,8 @@ class _GradePageState extends State<GradePage> {
                                                     // _isActiveD = false;
                                                     // _isActiveE = false;
                                                     // _isActiveF = false;
-                                                    dummy();
+
                                                   }
-                                                  print("index=$index");
-                                                  print("index1= $index1");
                                                 });
                                               },
                                               onDoubleTap: () {
@@ -494,8 +475,6 @@ class _GradePageState extends State<GradePage> {
                                                   if (index1 == index) {
                                                     _isActiveC = !_isActiveC;
                                                   }
-
-                                                  dummy();
                                                 });
                                               },
                                               child: CircleAvatar(
@@ -558,10 +537,8 @@ class _GradePageState extends State<GradePage> {
                                                     // _isActiveA = false;
                                                     // _isActiveE = false;
                                                     // _isActiveF = false;
-                                                    dummy();
+
                                                   }
-                                                  print("index=$index");
-                                                  print("index1= $index1");
                                                 });
                                               },
                                               onDoubleTap: () {
@@ -575,8 +552,6 @@ class _GradePageState extends State<GradePage> {
                                                   if (index1 == index) {
                                                     _isActiveD = !_isActiveD;
                                                   }
-
-                                                  dummy();
                                                 });
                                               },
                                               child: CircleAvatar(
@@ -639,10 +614,8 @@ class _GradePageState extends State<GradePage> {
                                                     // _isActiveD = false;
                                                     // _isActiveA = false;
                                                     // _isActiveF = false;
-                                                    dummy();
+
                                                   }
-                                                  print("index=$index");
-                                                  print("index1= $index1");
                                                 });
                                               },
                                               onDoubleTap: () {
@@ -656,8 +629,6 @@ class _GradePageState extends State<GradePage> {
                                                   if (index1 == index) {
                                                     _isActiveE = !_isActiveE;
                                                   }
-
-                                                  dummy();
                                                 });
                                               },
                                               child: CircleAvatar(
@@ -720,10 +691,8 @@ class _GradePageState extends State<GradePage> {
                                                     // _isActiveD = false;
                                                     // _isActiveE = false;
                                                     // _isActiveA = false;
-                                                    dummy();
+
                                                   }
-                                                  print("index=$index");
-                                                  print("index1= $index1");
                                                 });
                                               },
                                               onDoubleTap: () {
@@ -737,8 +706,6 @@ class _GradePageState extends State<GradePage> {
                                                   if (index1 == index) {
                                                     _isActiveF = !_isActiveF;
                                                   }
-
-                                                  dummy();
                                                 });
                                               },
                                               child: CircleAvatar(
@@ -812,6 +779,7 @@ class _GradePageState extends State<GradePage> {
                                     style: TextStyle(
                                       fontSize: size.height * .021,
                                       color: Colors.white,
+                                      fontFamily: 'Raleway',
                                     ),
                                   ),
                                 ),
@@ -1501,7 +1469,7 @@ class _GradePageState extends State<GradePage> {
                       credit.forEach((element) {
                         creditsum += element;
                       });
-                      print(creditsum);
+
                       score.forEach((element) {
                         if (element == 1.0) {
                           print("null");
@@ -1515,8 +1483,6 @@ class _GradePageState extends State<GradePage> {
                         subsum = 0.0;
                         creditsum = 0.0;
                       });
-                      print("numerator  $subsum");
-                      print("CGPA = $cgpa");
                     }
                     if (widget.honor == true && widget.oe == false) {
                       credit.forEach((element) {
@@ -1540,13 +1506,12 @@ class _GradePageState extends State<GradePage> {
                         subsum = 0.0;
                         creditsum = 0.0;
                       });
-                      print("cgpa   $cgpa");
                     }
                     if (widget.honor == false && widget.oe == true) {
                       credit.forEach((element) {
                         creditsum += element;
                       });
-                      print(creditsum);
+
                       score.forEach((element) {
                         if (element == 1.0) {
                           print("null");
@@ -1564,7 +1529,6 @@ class _GradePageState extends State<GradePage> {
                         subsum = 0.0;
                         creditsum = 0.0;
                       });
-                      print("cgpa   $cgpa");
                     }
                     if (widget.honor == true && widget.oe == true) {
                       credit.forEach((element) {
@@ -1590,37 +1554,31 @@ class _GradePageState extends State<GradePage> {
                       creditsum = creditsum + 3;
                       setState(() {
                         cgpa = subsum / creditsum;
+
                         subsum = 0.0;
                         creditsum = 0.0;
                       });
-
-                      print(cgpa.toStringAsFixed(2));
                     }
-                    print("creditsum    $creditsum");
-                    print("subsum   $subsum");
-                    print("subcount  $subcount");
+
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Result(cgpa)));
                   },
-                  child: InkWell(
-                    onTap: () {
-                      // TODO RESULT
-                    },
-                    child: Container(
-                      child: Center(
-                          child: Text(
-                        "Calculate",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w800,
-                            fontSize: size.height * 0.025,
-                            fontFamily: 'Raleway',
-                            letterSpacing: size.height * 0.002),
-                      )),
-                      width: size.width * 0.4,
-                      height: size.height * 0.06,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.deepOrange),
-                    ),
+                  child: Container(
+                    child: Center(
+                        child: Text(
+                      "Calculate",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                          fontSize: size.height * 0.025,
+                          fontFamily: 'Raleway',
+                          letterSpacing: size.height * 0.002),
+                    )),
+                    width: size.width * 0.4,
+                    height: size.height * 0.06,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.deepOrange),
                   ),
                 )
               ],
