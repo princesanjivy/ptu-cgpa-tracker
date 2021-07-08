@@ -16,14 +16,13 @@ class Result extends StatelessWidget {
         backgroundColor: Colors.deepOrange,
         title: Text(
           "CGPA",
-          style: GoogleFonts.raleway(
-              textStyle: TextStyle(
+          style: TextStyle(
             color: Colors.white,
             fontFamily: 'Raleway',
             fontSize: size.height * 0.027,
             fontWeight: FontWeight.bold,
             letterSpacing: 1.5,
-          )),
+          ),
         ),
       ),
       backgroundColor: Colors.black,
@@ -32,7 +31,6 @@ class Result extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: 10),
           ),
-          // if (widget.cgpa >= 0 && widget.cgpa <= 5)
           if (cgpa >= 0 && cgpa <= 5)
             Padding(
               padding: EdgeInsets.only(top: 10),
@@ -62,7 +60,6 @@ class Result extends StatelessWidget {
                           fontFamily: 'raleway'),
                       children: <TextSpan>[
                         TextSpan(
-                          //text: '${widget.cgpa}',
                           text: cgpa.toStringAsFixed(2),
                           style: GoogleFonts.raleway(
                             fontSize: 50,
@@ -78,18 +75,16 @@ class Result extends StatelessWidget {
                     "Every failure is a step to success. "
                     "Aim for more marks",
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.raleway(
-                        textStyle: TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Raleway',
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
-                    )),
+                    ),
                   ),
                 ),
               ]),
             ),
-          // if (widget.cgpa > 5 && widget.cgpa <= 7)
           if (cgpa > 5 && cgpa <= 7)
             Padding(
               padding: EdgeInsets.only(top: 10),
@@ -119,9 +114,9 @@ class Result extends StatelessWidget {
                           fontFamily: 'raleway'),
                       children: <TextSpan>[
                         TextSpan(
-                          //text: '${widget.cgpa}',
                           text: cgpa.toStringAsFixed(2),
-                          style: GoogleFonts.raleway(
+                          style: TextStyle(
+                            fontFamily: 'raleway',
                             fontSize: 50,
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
@@ -134,18 +129,16 @@ class Result extends StatelessWidget {
                   child: Text(
                     "Be consistent on your learning ",
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.raleway(
-                        textStyle: TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontSize: 25,
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.bold,
-                    )),
+                    ),
                   ),
                 ),
               ]),
             ),
-          // if (widget.cgpa > 7 && widget.cgpa <= 9)
           if (cgpa > 7 && cgpa <= 9)
             Padding(
               padding: EdgeInsets.only(top: 10),
@@ -177,12 +170,12 @@ class Result extends StatelessWidget {
                           fontFamily: 'raleway'),
                       children: <TextSpan>[
                         TextSpan(
-                          //text: '${widget.cgpa}',
                           text: cgpa.toStringAsFixed(2),
-                          style: GoogleFonts.raleway(
+                          style: TextStyle(
                             fontSize: 50,
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
+                            fontFamily: 'raleway',
                           ),
                         ),
                       ])),
@@ -193,18 +186,16 @@ class Result extends StatelessWidget {
                     "Congraluations!                           "
                     "You are at the one step behind the success",
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.raleway(
-                        textStyle: TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Raleway',
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
-                    )),
+                    ),
                   ),
                 ),
               ]),
             ),
-          // if (widget.cgpa > 9 && widget.cgpa <= 10)
           if (cgpa > 9 && cgpa <= 10)
             Padding(
               padding: EdgeInsets.only(top: 20),
@@ -234,7 +225,6 @@ class Result extends StatelessWidget {
                           fontFamily: 'raleway'),
                       children: <TextSpan>[
                         TextSpan(
-                          //text: '${widget.cgpa}',
                           text: cgpa.toStringAsFixed(2),
                           style: GoogleFonts.raleway(
                             fontSize: 50,
@@ -250,13 +240,12 @@ class Result extends StatelessWidget {
                     "Sawadekha!  Happy now?                           "
                     "Hardwork never fails",
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.raleway(
-                        textStyle: TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Raleway',
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
-                    )),
+                    ),
                   ),
                 ),
               ]),

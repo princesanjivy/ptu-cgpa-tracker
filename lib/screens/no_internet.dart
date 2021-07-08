@@ -1,6 +1,5 @@
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,12 +29,11 @@ class NoInternet extends StatelessWidget {
                     padding: EdgeInsets.only(top: 60, bottom: 10, right: 160),
                     child: Text(
                       'PTU CGPA TRACKER',
-                      style: GoogleFonts.raleway(
-                        textStyle: TextStyle(
-                          color: Colors.deepOrange,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      style: TextStyle(
+                        color: Colors.deepOrange,
+                        fontFamily: 'raleway',
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -51,7 +49,8 @@ class NoInternet extends StatelessWidget {
                     padding: EdgeInsets.only(left: 8, bottom: 50),
                     child: Text(
                       'No internet connection',
-                      style: GoogleFonts.raleway(
+                      style: TextStyle(
+                        fontFamily: 'raleway',
                         color: Colors.deepOrange,
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
