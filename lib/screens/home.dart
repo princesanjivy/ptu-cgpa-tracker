@@ -8,7 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 class Home extends StatelessWidget {
   final Data data;
 
-  Home({@required this.data, Key key}) : super(key: key);
+  Home({this.data, Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

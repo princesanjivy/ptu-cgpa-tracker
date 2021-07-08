@@ -341,7 +341,7 @@ class _OnBoardState extends State<OnBoard> {
               onTap: () {
                 showInterstitialAd();
 
-                Navigator.of(context).pushReplacement(
+                Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => Home(
                       data: Data(choosedept, choosesem, honor, oe),
