@@ -177,8 +177,7 @@ class AboutUs extends StatelessWidget {
                 ),
               )),
           Padding(
-              padding:
-                  EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 25),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Container(
                 height: 230,
                 width: 320,
@@ -292,8 +291,7 @@ class AboutUs extends StatelessWidget {
                 ),
               )),
           Padding(
-              padding:
-                  EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 25),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Container(
                 height: 230,
                 width: 320,
@@ -398,8 +396,7 @@ class AboutUs extends StatelessWidget {
                 ),
               )),
           Padding(
-              padding:
-                  EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 25),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Container(
                 height: 230,
                 width: 320,
@@ -495,8 +492,7 @@ class AboutUs extends StatelessWidget {
                 ),
               )),
           Padding(
-              padding:
-                  EdgeInsets.only(top: 20, bottom: 40, left: 30, right: 25),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Container(
                 height: 230,
                 width: 320,

@@ -69,7 +69,7 @@
 //             Padding(
 //               padding: EdgeInsets.fromLTRB(40, 10, 40, 20),
 //               child: Text(
-//                 'Allow PEC students to calculate their CGPA, keep track of current semester’s CGPA so that it will give overall CGPA and current sem’s CGPA, in addition to that, department wise CGPA rank system overall & per semester',
+//                 'PTU CGPA TRACKER helps the PTU students to calculate their current CGPA with just tapping the grades they secured. Make sure that you have checked Honor/Minor and Open Elective check box if you have any before proceeding to calculate',
 //                 style: GoogleFonts.raleway(
 //                   fontSize: 15,
 //                   fontWeight: FontWeight.w600,
@@ -80,7 +80,7 @@
 //             Padding(
 //               padding: EdgeInsets.fromLTRB(40, 10, 40, 20),
 //               child: Text(
-//                 'It is easy and quick app to generate the CGPA for all semester and current semester',
+//                 'It is easy and quick app to generate the CGPA for current semester',
 //                 style: GoogleFonts.raleway(
 //                   fontSize: 15,
 //                   fontWeight: FontWeight.w600,

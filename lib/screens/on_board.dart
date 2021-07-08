@@ -133,7 +133,7 @@ class _OnBoardState extends State<OnBoard> {
         elevation: 0,
         backgroundColor: Colors.deepOrange,
         title: Text(
-          'PTU GPA TRACKER',
+          'PTU CGPA TRACKER',
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'Raleway',

@@ -17,8 +17,6 @@ class _GradePageState extends State<GradePage> {
   @override
   void initState() {
     super.initState();
-
-    // _readsem();
   }
 
   double finalhonour = 0.0;
@@ -152,7 +150,6 @@ class _GradePageState extends State<GradePage> {
                     width: size.width * 1,
                     decoration: BoxDecoration(),
                     child: ListView.builder(
-                        // scrollDirection: Axis.horizontal,
                         itemCount: snapshots.data.docs.length,
                         itemBuilder: (context, index) {
                           return Padding(
@@ -220,14 +217,6 @@ class _GradePageState extends State<GradePage> {
                                                     score[index] =
                                                         (credit[index] *
                                                             subject1[index]);
-
-                                                    // _isActiveA = false;
-                                                    // _isActiveB = false;
-                                                    // _isActiveC = false;
-                                                    // _isActiveD = false;
-                                                    // _isActiveE = false;
-                                                    // _isActiveF = false;
-
                                                   }
                                                 });
                                               },
@@ -299,14 +288,6 @@ class _GradePageState extends State<GradePage> {
                                                     score[index] =
                                                         (credit[index] *
                                                             subject1[index]);
-
-                                                    // _isActiveS = false;
-                                                    // _isActiveB = false;
-                                                    // _isActiveC = false;
-                                                    // _isActiveD = false;
-                                                    // _isActiveE = false;
-                                                    // _isActiveF = false;
-
                                                   }
                                                 });
                                               },
@@ -376,14 +357,6 @@ class _GradePageState extends State<GradePage> {
                                                     score[index] =
                                                         (credit[index] *
                                                             subject1[index]);
-
-                                                    // _isActiveS = false;
-                                                    // _isActiveA = false;
-                                                    // _isActiveC = false;
-                                                    // _isActiveD = false;
-                                                    // _isActiveE = false;
-                                                    // _isActiveF = false;
-
                                                   }
                                                 });
                                               },
@@ -453,14 +426,6 @@ class _GradePageState extends State<GradePage> {
                                                     score[index] =
                                                         (credit[index] *
                                                             subject1[index]);
-
-                                                    // _isActiveS = false;
-                                                    // _isActiveB = false;
-                                                    // _isActiveA = false;
-                                                    // _isActiveD = false;
-                                                    // _isActiveE = false;
-                                                    // _isActiveF = false;
-
                                                   }
                                                 });
                                               },
@@ -530,14 +495,6 @@ class _GradePageState extends State<GradePage> {
                                                     score[index] =
                                                         (credit[index] *
                                                             subject1[index]);
-
-                                                    // _isActiveS = false;
-                                                    // _isActiveB = false;
-                                                    // _isActiveC = false;
-                                                    // _isActiveA = false;
-                                                    // _isActiveE = false;
-                                                    // _isActiveF = false;
-
                                                   }
                                                 });
                                               },
@@ -607,14 +564,6 @@ class _GradePageState extends State<GradePage> {
                                                     score[index] =
                                                         (credit[index] *
                                                             subject1[index]);
-
-                                                    // _isActiveS = false;
-                                                    // _isActiveB = false;
-                                                    // _isActiveC = false;
-                                                    // _isActiveD = false;
-                                                    // _isActiveA = false;
-                                                    // _isActiveF = false;
-
                                                   }
                                                 });
                                               },
@@ -684,14 +633,6 @@ class _GradePageState extends State<GradePage> {
                                                     score[index] =
                                                         (credit[index] *
                                                             subject1[index]);
-
-                                                    // _isActiveS = false;
-                                                    // _isActiveB = false;
-                                                    // _isActiveC = false;
-                                                    // _isActiveD = false;
-                                                    // _isActiveE = false;
-                                                    // _isActiveA = false;
-
                                                   }
                                                 });
                                               },
