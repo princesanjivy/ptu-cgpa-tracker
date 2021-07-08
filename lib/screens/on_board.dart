@@ -70,23 +70,25 @@ class _OnBoardState extends State<OnBoard> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.deepOrange,
-          title: Text(
-            'PTU GPA TRACKER',
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Raleway',
-              fontSize: size.height * 0.027,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.5,
-            ),
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.deepOrange,
+        title: Text(
+          'PTU GPA TRACKER',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Raleway',
+            fontSize: size.height * 0.027,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1.5,
           ),
         ),
-        body: SingleChildScrollView(
-          child: Column(
+      ),
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          ListView(
             children: [
               SizedBox(
                 height: 32,
@@ -101,7 +103,7 @@ class _OnBoardState extends State<OnBoard> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(
+                padding: EdgeInsets.only(
                   left: 55,
                   right: 55,
                 ),
@@ -200,9 +202,9 @@ class _OnBoardState extends State<OnBoard> {
                 ),
               ),
               /* Text(
-              "$choosesem",
-              style: TextStyle(color: Colors.white),
-            )*/
+                "$choosesem",
+                style: TextStyle(color: Colors.white),
+              )*/
               SizedBox(
                 height: size.height * 0.02,
               ),
@@ -250,37 +252,42 @@ class _OnBoardState extends State<OnBoard> {
               SizedBox(
                 height: size.height * 0.07,
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => Home(
-                        data: Data(choosedept, choosesem, honor, oe),
-                      ),
-                    ),
-                  );
-                },
-                child: Container(
-                  height: size.height * 0.06,
-                  width: size.width * 0.4,
-                  decoration: BoxDecoration(
-                      color: Colors.deepOrange,
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Center(
-                      child: Text(
-                    "Continue",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
-                        fontSize: size.height * 0.025,
-                        fontFamily: 'Raleway',
-                        letterSpacing: size.height * 0.002),
-                  )),
-                ),
-              ),
             ],
           ),
-        ));
+          Padding(
+            padding: EdgeInsets.all(32),
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => Home(
+                      data: Data(choosedept, choosesem, honor, oe),
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                height: size.height * 0.06,
+                width: size.width * 0.4,
+                decoration: BoxDecoration(
+                    color: Colors.deepOrange,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Center(
+                    child: Text(
+                  "Continue",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontSize: size.height * 0.025,
+                      fontFamily: 'Raleway',
+                      letterSpacing: size.height * 0.002),
+                )),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   List<DropdownMenuItem<String>> _dropDownItem() {

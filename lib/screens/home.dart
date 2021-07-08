@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ptu_cgpa_tracker/screens/grade.dart';
 import 'package:ptu_cgpa_tracker/screens/on_board.dart';
+import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatelessWidget {
   final Data data;
@@ -26,6 +28,30 @@ class Home extends StatelessWidget {
             letterSpacing: 1.5,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Share.share(
+                "Check out this cool app \nhttps://play.google.com/store/apps/details?id=com.princeappstudio.ptu_cgpa_tracker",
+              );
+            },
+            icon: Icon(
+              Icons.share_rounded,
+              size: 28,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              launch(
+                "https://play.google.com/store/apps/details?id=com.princeappstudio.ptu_cgpa_tracker",
+              );
+            },
+            icon: Icon(
+              Icons.star_rounded,
+              size: 32,
+            ),
+          ),
+        ],
       ),
       body: Stack(
         alignment: Alignment.bottomCenter,
@@ -41,34 +67,6 @@ class Home extends StatelessWidget {
                   ),
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.all(20.0),
-              //   child: Container(
-              //     padding: EdgeInsets.all(.2),
-              //     height: 150,
-              //     width: 280,
-              //     decoration: BoxDecoration(
-              //         borderRadius: BorderRadius.circular(15),
-              //         gradient: LinearGradient(
-              //             colors: [Colors.black, Colors.white],
-              //             begin: Alignment.centerLeft,
-              //             end: Alignment.centerRight)),
-              //     child: Container(
-              //       padding: EdgeInsets.all(10),
-              //       decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(15),
-              //           color: Colors.black),
-              //       child: Text(
-              //         "PTU CGPA TRACKER helps the PTU students to calculate their current semester CGPA with just tapping the grades they secured.Make sure that you have checked the Honor/Minor and Open Elective check box if you have any before proceeding to calculate ",
-              //         style: TextStyle(
-              //             color: Colors.white,
-              //             fontFamily: 'raleway',
-              //             fontSize: size.height * 0.020,
-              //             letterSpacing: size.height * 0.001),
-              //       ),
-              //     ),
-              //   ),
-              // ),
               Row(
                 children: [
                   Padding(
@@ -148,7 +146,7 @@ class Home extends StatelessWidget {
               child: Container(
                 child: Center(
                     child: Text(
-                  "Proceed",
+                  "Calculate",
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w800,
