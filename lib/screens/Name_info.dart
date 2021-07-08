@@ -2,18 +2,18 @@
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:share/share.dart';
 // import 'package:url_launcher/url_launcher.dart';
-//
-// class AboutUs extends StatelessWidget {
+
+// class Nameinfo extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
 //     Size size = MediaQuery.of(context).size;
-//
+
 //     return Scaffold(
 //       appBar: AppBar(
 //         elevation: 0,
 //         backgroundColor: Colors.deepOrange,
 //         title: Text(
-//           "ABOUT US",
+//           "About",
 //           style: TextStyle(
 //             color: Colors.white,
 //             fontFamily: 'Raleway',

@@ -35,22 +35,6 @@ class _OnBoardState extends State<OnBoard> {
   int maxFailedLoadAttempts = 3;
   int numInterstitialLoadAttempts = 0;
 
-  // final keys = 'cur';
-  // SharedPreferences prefss;
-  /* _read() async {
-    prefs = await SharedPreferences.getInstance();
-
-    setState(() {
-      choosedept = prefs.getString(_key) ?? "Computer Science Engineering";
-    });
-  }
-
-  _readsem() async {
-    prefss = await SharedPreferences.getInstance();
-    setState(() {
-      choosesem = prefss.getString(keys) ?? '1';
-    });
-  }*/
   @override
   void initState() {
     super.initState();
@@ -135,13 +119,6 @@ class _OnBoardState extends State<OnBoard> {
       choosedept = prefs.getString(_key) ?? "IT";
     });
   }
-
-  /*_readsem() async {
-    prefss = await SharedPreferences.getInstance();
-    setState(() {
-    //  choosesem = prefss.getString(keys) ?? '';
-    });
-  }*/
 
   bool honor = false;
   bool oe = false;
@@ -275,17 +252,13 @@ class _OnBoardState extends State<OnBoard> {
                         setState(() {
                           choosesem = value;
                         });
-                        //prefss.setString(_key, choosesem);
+
                         choosesem = value;
                       },
                     ),
                   ),
                 ),
               ),
-              /* Text(
-                "$choosesem",
-                style: TextStyle(color: Colors.white),
-              )*/
               SizedBox(
                 height: size.height * 0.02,
               ),
@@ -297,7 +270,6 @@ class _OnBoardState extends State<OnBoard> {
                       children: [
                         Checkbox(
                             activeColor: Colors.deepOrange,
-                            // checkColor: Colors.white,
                             tristate: false,
                             value: honor,
                             onChanged: (bool value) {
