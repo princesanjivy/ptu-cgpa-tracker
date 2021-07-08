@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:ptu_cgpa_tracker/constants.dart';
 import 'package:ptu_cgpa_tracker/screens/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,8 +24,17 @@ class OnBoard extends StatefulWidget {
 class _OnBoardState extends State<OnBoard> {
   String choosesem;
   String choosedept;
+
   SharedPreferences prefs;
   final _key = 'cur_r';
+
+  BannerAd bannerAd;
+  bool bannerAdLoaded = false;
+
+  InterstitialAd interstitialAd;
+  int maxFailedLoadAttempts = 3;
+  int numInterstitialLoadAttempts = 0;
+
   // final keys = 'cur';
   // SharedPreferences prefss;
   /* _read() async {
@@ -43,8 +54,78 @@ class _OnBoardState extends State<OnBoard> {
   @override
   void initState() {
     super.initState();
+
     _read();
-    // _readsem();
+
+    _createBannerAd();
+    _createInterstitialAd();
+  }
+
+  _createBannerAd() {
+    bannerAd = BannerAd(
+      adUnitId: onBoardBannerId,
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) {
+          setState(() {
+            bannerAdLoaded = true;
+          });
+        },
+        onAdFailedToLoad: (ad, error) {
+          bannerAd.dispose();
+        },
+      ),
+    );
+
+    bannerAd.load();
+  }
+
+  _createInterstitialAd() {
+    InterstitialAd.load(
+      adUnitId: betweenInterstitialId,
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (ad) {
+          interstitialAd = ad;
+          numInterstitialLoadAttempts = 0;
+        },
+        onAdFailedToLoad: (error) {
+          numInterstitialLoadAttempts += 1;
+          interstitialAd = null;
+          if (numInterstitialLoadAttempts <= maxFailedLoadAttempts) {
+            _createInterstitialAd();
+          }
+        },
+      ),
+    );
+  }
+
+  void showInterstitialAd() {
+    if (interstitialAd == null) {
+      return;
+    }
+    interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
+      onAdDismissedFullScreenContent: (InterstitialAd ad) {
+        ad.dispose();
+        _createInterstitialAd();
+      },
+      onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
+        ad.dispose();
+        _createInterstitialAd();
+      },
+    );
+
+    interstitialAd.show();
+    // interstitialAd = null;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    bannerAd.dispose();
+    interstitialAd.dispose();
   }
 
   _read() async {
@@ -94,7 +175,7 @@ class _OnBoardState extends State<OnBoard> {
                 height: 32,
               ),
               Padding(
-                padding: EdgeInsets.only(top: 28),
+                padding: EdgeInsets.only(top: 16),
                 child: SvgPicture.asset(
                   "assets/onBoard.svg",
                   fit: BoxFit.contain,
@@ -258,6 +339,8 @@ class _OnBoardState extends State<OnBoard> {
             padding: EdgeInsets.all(32),
             child: InkWell(
               onTap: () {
+                showInterstitialAd();
+
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) => Home(
@@ -273,20 +356,30 @@ class _OnBoardState extends State<OnBoard> {
                     color: Colors.deepOrange,
                     borderRadius: BorderRadius.circular(15)),
                 child: Center(
-                    child: Text(
-                  "Continue",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                      fontSize: size.height * 0.025,
-                      fontFamily: 'Raleway',
-                      letterSpacing: size.height * 0.002),
-                )),
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                        fontSize: size.height * 0.025,
+                        fontFamily: 'Raleway',
+                        letterSpacing: size.height * 0.002),
+                  ),
+                ),
               ),
             ),
           ),
         ],
       ),
+      bottomNavigationBar: bannerAdLoaded
+          ? Container(
+              width: bannerAd.size.width.toDouble(),
+              height: bannerAd.size.height.toDouble(),
+              child: AdWidget(
+                ad: bannerAd,
+              ),
+            )
+          : null,
     );
   }
 

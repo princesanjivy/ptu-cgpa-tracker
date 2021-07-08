@@ -10,12 +10,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Lottie Animation',
-      home: Nonet(),
+      home: NoInternet(),
     );
   }
 }
 
-class Nonet extends StatelessWidget {
+class NoInternet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConnectivityAppWrapper(

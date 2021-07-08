@@ -135,7 +135,10 @@ class _GradePageState extends State<GradePage> {
         builder: (context, snapshots) {
           if (x == 1 && snapshots.connectionState == ConnectionState.waiting) {
             return Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                valueColor:
+                    new AlwaysStoppedAnimation<Color>(Colors.deepOrange),
+              ),
             );
           }
           return SingleChildScrollView(

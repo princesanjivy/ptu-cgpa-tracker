@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ptu_cgpa_tracker/screens/about_us.dart';
 import 'package:ptu_cgpa_tracker/screens/grade.dart';
 import 'package:ptu_cgpa_tracker/screens/on_board.dart';
 import 'package:share/share.dart';
@@ -67,11 +68,17 @@ class Home extends StatelessWidget {
                   ),
                 ),
               ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Text(
+
+              /// change this both not looking same
+              Padding(
+                padding: EdgeInsets.only(
+                  left: 16,
+                  top: 8,
+                  bottom: 8,
+                ),
+                child: Row(
+                  children: [
+                    Text(
                       'Semester :',
                       style: TextStyle(
                           color: Colors.white,
@@ -79,29 +86,33 @@ class Home extends StatelessWidget {
                           fontSize: size.height * 0.025,
                           letterSpacing: size.height * 0.001),
                     ),
-                  ),
-                  SizedBox(
-                    width: size.width * 0.03,
-                  ),
-                  Text(
-                    '${data.sem}',
-                    style: TextStyle(
-                        letterSpacing: 2,
-                        shadows: <Shadow>[
-                          Shadow(
-                            offset: Offset(0, .5),
-                            blurRadius: 1.0,
-                            color: Colors.white,
-                          ),
-                        ],
-                        color: Colors.deepOrange,
-                        fontSize: size.height * .03,
-                        fontFamily: 'raleway'),
-                  ),
-                ],
+                    SizedBox(
+                      width: size.width * 0.03,
+                    ),
+                    Text(
+                      '${data.sem}',
+                      style: TextStyle(
+                          letterSpacing: 2,
+                          shadows: <Shadow>[
+                            Shadow(
+                              offset: Offset(0, .5),
+                              blurRadius: 1.0,
+                              color: Colors.white,
+                            ),
+                          ],
+                          color: Colors.deepOrange,
+                          fontSize: size.height * .03,
+                          fontFamily: 'raleway'),
+                    ),
+                  ],
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20, top: 10),
+                padding: EdgeInsets.only(
+                  left: 16,
+                  top: 8,
+                  bottom: 16,
+                ),
                 child: Row(
                   children: [
                     Text(
@@ -129,6 +140,81 @@ class Home extends StatelessWidget {
                           color: Colors.deepOrange,
                           fontSize: size.height * .03,
                           fontFamily: 'raleway'),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16,
+                ),
+                child: Wrap(
+                  alignment: WrapAlignment.start,
+                  runSpacing: 16,
+                  spacing: 16,
+                  children: [
+                    Container(
+                      width: size.width / 2.5,
+                      height: 100,
+                      padding: EdgeInsets.all(.2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          gradient: LinearGradient(
+                              colors: [Colors.black, Colors.white],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight)),
+                      child: Container(
+                        width: size.width / 2.5,
+                        height: 100,
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.black),
+                        child: Text(
+                          "More Apps",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'raleway',
+                              fontSize: size.height * 0.020,
+                              letterSpacing: size.height * 0.001),
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => AboutUs(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: size.width / 2.5,
+                        height: 100,
+                        padding: EdgeInsets.all(.2),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            gradient: LinearGradient(
+                                colors: [Colors.black, Colors.white],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight)),
+                        child: Container(
+                          width: size.width / 2.5,
+                          height: 100,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.black),
+                          child: Text(
+                            "About Us",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'raleway',
+                                fontSize: size.height * 0.020,
+                                letterSpacing: size.height * 0.001),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
