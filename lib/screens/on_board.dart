@@ -87,6 +87,7 @@ class _OnBoardState extends State<OnBoard> {
 
   void showInterstitialAd() {
     if (interstitialAd == null) {
+      print("Ad not available");
       return;
     }
     interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
@@ -313,7 +314,7 @@ class _OnBoardState extends State<OnBoard> {
               onTap: () {
                 showInterstitialAd();
 
-                Navigator.of(context).push(
+                Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) => Home(
                       data: Data(choosedept, choosesem, honor, oe),
