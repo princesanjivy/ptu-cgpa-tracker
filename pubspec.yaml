@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^2.1.0
   lottie: ^1.0.1
   connectivity_wrapper: ^1.0.6
   flutter_svg: ^0.22.0 

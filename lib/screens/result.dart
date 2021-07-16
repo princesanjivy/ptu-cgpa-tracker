@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ptu_cgpa_tracker/screens/home.dart';
 
@@ -58,11 +57,12 @@ class Result extends StatelessWidget {
                             color: Colors.deepOrange,
                             fontSize: size.height * .050,
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'raleway'),
+                            fontFamily: 'Raleway'),
                         children: <TextSpan>[
                           TextSpan(
                             text: cgpa.toStringAsFixed(2),
-                            style: GoogleFonts.raleway(
+                            style: TextStyle(
+                              fontFamily: "Raleway",
                               fontSize: 50,
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
@@ -112,12 +112,12 @@ class Result extends StatelessWidget {
                             color: Colors.deepOrange,
                             fontSize: size.height * .050,
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'raleway'),
+                            fontFamily: 'Raleway'),
                         children: <TextSpan>[
                           TextSpan(
                             text: cgpa.toStringAsFixed(2),
                             style: TextStyle(
-                              fontFamily: 'raleway',
+                              fontFamily: 'Raleway',
                               fontSize: 50,
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
@@ -168,7 +168,7 @@ class Result extends StatelessWidget {
                             color: Colors.deepOrange,
                             fontSize: size.height * .050,
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'raleway'),
+                            fontFamily: 'Raleway'),
                         children: <TextSpan>[
                           TextSpan(
                             text: cgpa.toStringAsFixed(2),
@@ -176,7 +176,7 @@ class Result extends StatelessWidget {
                               fontSize: 50,
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
-                              fontFamily: 'raleway',
+                              fontFamily: 'Raleway',
                             ),
                           ),
                         ])),
@@ -224,11 +224,12 @@ class Result extends StatelessWidget {
                             color: Colors.deepOrange,
                             fontSize: size.height * .050,
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'raleway'),
+                            fontFamily: 'Raleway'),
                         children: <TextSpan>[
                           TextSpan(
                             text: cgpa.toStringAsFixed(2),
-                            style: GoogleFonts.raleway(
+                            style: TextStyle(
+                              fontFamily: "Raleway",
                               fontSize: 50,
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
@@ -240,8 +241,8 @@ class Result extends StatelessWidget {
                     padding:
                         const EdgeInsets.only(top: 10, left: 15, right: 15),
                     child: Text(
-                      "Sawadekha!  Happy now?                           "
-                      "Hardwork never fails",
+                      "Sawadekha! Happy now?                           "
+                      "Hard work never fails",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,

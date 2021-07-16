@@ -82,7 +82,7 @@ class Home extends StatelessWidget {
                       'Semester :',
                       style: TextStyle(
                           color: Colors.white,
-                          fontFamily: 'raleway',
+                          fontFamily: 'Raleway',
                           fontSize: size.height * 0.025,
                           letterSpacing: size.height * 0.001),
                     ),
@@ -102,7 +102,7 @@ class Home extends StatelessWidget {
                           ],
                           color: Colors.deepOrange,
                           fontSize: size.height * .03,
-                          fontFamily: 'raleway'),
+                          fontFamily: 'Raleway'),
                     ),
                   ],
                 ),
@@ -119,7 +119,7 @@ class Home extends StatelessWidget {
                       'Department :',
                       style: TextStyle(
                           color: Colors.white,
-                          fontFamily: 'raleway',
+                          fontFamily: 'Raleway',
                           fontSize: size.height * 0.025,
                           letterSpacing: size.height * 0.001),
                     ),
@@ -139,7 +139,7 @@ class Home extends StatelessWidget {
                           ],
                           color: Colors.deepOrange,
                           fontSize: size.height * .03,
-                          fontFamily: 'raleway'),
+                          fontFamily: 'Raleway'),
                     ),
                   ],
                 ),
@@ -174,7 +174,7 @@ class Home extends StatelessWidget {
                           "More Apps",
                           style: TextStyle(
                               color: Colors.white,
-                              fontFamily: 'raleway',
+                              fontFamily: 'Raleway',
                               fontSize: size.height * 0.020,
                               letterSpacing: size.height * 0.001),
                         ),
@@ -209,7 +209,7 @@ class Home extends StatelessWidget {
                             "About Us",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontFamily: 'raleway',
+                                fontFamily: 'Raleway',
                                 fontSize: size.height * 0.020,
                                 letterSpacing: size.height * 0.001),
                           ),

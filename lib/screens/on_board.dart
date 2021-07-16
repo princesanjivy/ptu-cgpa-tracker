@@ -183,7 +183,7 @@ class _OnBoardState extends State<OnBoard> {
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: size.height * .02,
-                            fontFamily: 'raleway'),
+                            fontFamily: 'Raleway'),
                       ),
                       icon: Icon(
                         Icons.arrow_drop_down,
@@ -195,7 +195,7 @@ class _OnBoardState extends State<OnBoard> {
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: size.height * .02,
-                          fontFamily: 'raleway'),
+                          fontFamily: 'Raleway'),
                       value: choosedept,
                       items: _dropDownItem(),
                       onChanged: (value) {
@@ -234,7 +234,7 @@ class _OnBoardState extends State<OnBoard> {
                         style: TextStyle(
                             color: Colors.grey,
                             fontSize: size.height * .02,
-                            fontFamily: 'raleway'),
+                            fontFamily: 'Raleway'),
                       ),
                       icon: Icon(
                         Icons.arrow_drop_down,
@@ -246,7 +246,7 @@ class _OnBoardState extends State<OnBoard> {
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: size.height * .02,
-                          fontFamily: 'raleway'),
+                          fontFamily: 'Raleway'),
                       value: choosesem,
                       items: _dropDownItemsem(),
                       onChanged: (value) {

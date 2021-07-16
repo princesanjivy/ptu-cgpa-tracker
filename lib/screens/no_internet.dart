@@ -31,7 +31,7 @@ class NoInternet extends StatelessWidget {
                       'PTU CGPA TRACKER',
                       style: TextStyle(
                         color: Colors.deepOrange,
-                        fontFamily: 'raleway',
+                        fontFamily: 'Raleway',
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
@@ -50,7 +50,7 @@ class NoInternet extends StatelessWidget {
                     child: Text(
                       'No internet connection',
                       style: TextStyle(
-                        fontFamily: 'raleway',
+                        fontFamily: 'Raleway',
                         color: Colors.deepOrange,
                         fontSize: 20,
                         fontWeight: FontWeight.w500,

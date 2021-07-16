@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -86,7 +85,8 @@ class AboutUs extends StatelessWidget {
                       ),
                       title: Text(
                         'THAMIZHARASAN  G',
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
+                          fontFamily: "Raleway",
                           fontSize: 15,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -97,7 +97,8 @@ class AboutUs extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(27, 10, 20, 10),
                         child: Text.rich(TextSpan(
                             text: '" A beginning coder in ',
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: "Raleway",
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
@@ -105,7 +106,8 @@ class AboutUs extends StatelessWidget {
                             children: <TextSpan>[
                               TextSpan(
                                 text: 'Flutter , ',
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                  fontFamily: "Raleway",
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.deepOrange,
@@ -114,7 +116,8 @@ class AboutUs extends StatelessWidget {
                               TextSpan(
                                 text:
                                     'to build an apps for Android. A learning coder in ',
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                  fontFamily: "Raleway",
                                   fontSize: 13,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.white,
@@ -122,7 +125,8 @@ class AboutUs extends StatelessWidget {
                               ),
                               TextSpan(
                                 text: 'C language. "',
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                  fontFamily: "Raleway",
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.deepOrange,
@@ -201,7 +205,8 @@ class AboutUs extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(0, 20, 13, 10),
                         child: Text(
                           'YADHAVA PRASSANA  G',
-                          style: GoogleFonts.poppins(
+                          style: TextStyle(
+                            fontFamily: "Raleway",
                             fontSize: 15,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -213,7 +218,8 @@ class AboutUs extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(27, 10, 20, 10),
                         child: Text.rich(TextSpan(
                             text: '" A Passionate coder who interested in  ',
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: "Raleway",
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
@@ -221,7 +227,8 @@ class AboutUs extends StatelessWidget {
                             children: <TextSpan>[
                               TextSpan(
                                 text: 'developing apps , ',
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                  fontFamily: "Raleway",
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.deepOrange,
@@ -229,7 +236,8 @@ class AboutUs extends StatelessWidget {
                               ),
                               TextSpan(
                                 text: 'using ',
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                  fontFamily: "Raleway",
                                   fontSize: 13,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.white,
@@ -237,7 +245,8 @@ class AboutUs extends StatelessWidget {
                               ),
                               TextSpan(
                                 text: 'Flutter. "',
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                  fontFamily: "Raleway",
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.deepOrange,
@@ -313,7 +322,8 @@ class AboutUs extends StatelessWidget {
                       ),
                       title: Text(
                         'PRINCE  SANJIVY',
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
+                          fontFamily: "Raleway",
                           fontSize: 15,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -324,7 +334,8 @@ class AboutUs extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(27, 10, 20, 10),
                         child: Text.rich(TextSpan(
                             text: '" A passionate coder in ',
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: "Raleway",
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
@@ -332,7 +343,8 @@ class AboutUs extends StatelessWidget {
                             children: <TextSpan>[
                               TextSpan(
                                 text: ' Python ',
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                  fontFamily: "Raleway",
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.deepOrange,
@@ -341,7 +353,8 @@ class AboutUs extends StatelessWidget {
                               TextSpan(
                                 text:
                                     ', who loves to build apps and games for Android and Web. "',
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                  fontFamily: "Raleway",
                                   fontSize: 13,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.white,
@@ -418,7 +431,8 @@ class AboutUs extends StatelessWidget {
                       ),
                       title: Text(
                         'YUVACHANDIRAN',
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
+                          fontFamily: "Raleway",
                           fontSize: 15,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -429,7 +443,8 @@ class AboutUs extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(27, 10, 20, 10),
                         child: Text.rich(TextSpan(
                             text: '" A lifelong learner and self thought ',
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: "Raleway",
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
@@ -437,7 +452,8 @@ class AboutUs extends StatelessWidget {
                             children: <TextSpan>[
                               TextSpan(
                                 text: 'Programmer "',
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                  fontFamily: "Raleway",
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.deepOrange,
@@ -514,7 +530,8 @@ class AboutUs extends StatelessWidget {
                       ),
                       title: Text(
                         'ASHOK  A',
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
+                          fontFamily: "Raleway",
                           fontSize: 15,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -525,7 +542,8 @@ class AboutUs extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(27, 10, 20, 10),
                         child: Text.rich(TextSpan(
                             text: '" A Intermediate Web Developer AND ,',
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: "Raleway",
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
@@ -533,7 +551,8 @@ class AboutUs extends StatelessWidget {
                             children: <TextSpan>[
                               TextSpan(
                                 text: '{ print("Python Beginner") } "',
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                  fontFamily: "Raleway",
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.deepOrange,
