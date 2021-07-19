@@ -201,7 +201,7 @@ class AboutUs extends StatelessWidget {
                         radius: 45,
                         child: CircleAvatar(
                           radius: 26,
-                          backgroundImage: AssetImage('assets/yadav.jpg'),
+                          backgroundImage: AssetImage('assets/yadava.jpg'),
                         ),
                       ),
                       title: Padding(
@@ -320,7 +320,7 @@ class AboutUs extends StatelessWidget {
                         radius: 45,
                         child: CircleAvatar(
                           radius: 26,
-                          backgroundImage: AssetImage('assets/sanj.jpg'),
+                          backgroundImage: AssetImage('assets/sanjivy.jpg'),
                         ),
                       ),
                       title: Text(
