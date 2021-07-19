@@ -99,7 +99,7 @@ class AboutUs extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.fromLTRB(27, 10, 20, 10),
                         child: Text.rich(TextSpan(
-                            text: '" A beginning coder in ',
+                            text: '" Beginner in  ',
                             style: TextStyle(
                               fontFamily: "Raleway",
                               fontSize: 13,

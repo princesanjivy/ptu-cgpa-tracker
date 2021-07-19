@@ -79,7 +79,31 @@ class Info extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(16),
               child: Text(
-                'It is easy and quick app to generate the CGPA for current semester',
+                'It is easy and quick app to generate the CGPA for current semester .',
+                style: TextStyle(
+                  fontFamily: "Raleway",
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.deepOrange,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                'CGPA is referred to as a cumulative grade point average. CGPA gives the average grade point of the student performance in all the subjects including the additional subject such as honour and minors when the students have.The subject wise performance of the students is recorded in form of Grades.',
+                style: TextStyle(
+                  fontFamily: "Raleway",
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.deepOrange,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                'The CGPA is used to denote the overall performance of the student in the academic session as grades. The CGPA system was introduced to ease the burden of marks and the stress of the examinations among students.  So to reduce the work for calculation we introduced the cgpa calculator for PTU students. This will make the calculation in user friendly manner.',
                 style: TextStyle(
                   fontFamily: "Raleway",
                   fontSize: 15,
