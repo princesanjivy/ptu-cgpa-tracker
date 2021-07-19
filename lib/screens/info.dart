@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class NameInfo extends StatelessWidget {
+class Info extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -12,7 +13,7 @@ class NameInfo extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.deepOrange,
         title: Text(
-          "About",
+          "About App",
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'Raleway',
@@ -51,22 +52,20 @@ class NameInfo extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.white12,
-                    width: 10,
-                  ),
-                ),
-                child: Image.asset(
-                  'assets/undraw_Calculator_0evy.png',
+            Hero(
+              tag: "aboutApp",
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: SvgPicture.asset(
+                  "assets/info.svg",
+                  fit: BoxFit.contain,
+                  height: 200,
+                  width: 200,
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(40, 10, 40, 20),
+              padding: EdgeInsets.all(16),
               child: Text(
                 'PTU CGPA TRACKER helps the PTU students to calculate their current CGPA with just tapping the grades they secured. Make sure that you have checked Honor/Minor and Open Elective check box if you have any before proceeding to calculate',
                 style: TextStyle(
@@ -78,7 +77,7 @@ class NameInfo extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(40, 10, 40, 20),
+              padding: EdgeInsets.all(16),
               child: Text(
                 'It is easy and quick app to generate the CGPA for current semester',
                 style: TextStyle(

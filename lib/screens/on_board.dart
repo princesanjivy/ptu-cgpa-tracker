@@ -15,18 +15,18 @@ class Data {
 }
 
 class OnBoard extends StatefulWidget {
-  OnBoard({Key key}) : super(key: key);
+  final bool fromHome;
+  OnBoard({Key key, this.fromHome}) : super(key: key);
 
   @override
   _OnBoardState createState() => _OnBoardState();
 }
 
 class _OnBoardState extends State<OnBoard> {
-  String choosesem;
-  String choosedept;
+  String chooseSem;
+  String chooseDept;
 
   SharedPreferences prefs;
-  final _key = 'cur_r';
 
   BannerAd bannerAd;
   bool bannerAdLoaded = false;
@@ -117,7 +117,10 @@ class _OnBoardState extends State<OnBoard> {
     prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      choosedept = prefs.getString(_key) ?? "IT";
+      chooseDept = prefs.getString("chooseDept") ?? "IT";
+      chooseSem = prefs.getString("chooseSem") ?? "3";
+      honor = prefs.getBool("isHonor") ?? false;
+      oe = prefs.getBool("isOe") ?? false;
     });
   }
 
@@ -152,13 +155,16 @@ class _OnBoardState extends State<OnBoard> {
               SizedBox(
                 height: 32,
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 16),
-                child: SvgPicture.asset(
-                  "assets/onBoard.svg",
-                  fit: BoxFit.contain,
-                  height: 200,
-                  width: 200,
+              Hero(
+                tag: "onBoard",
+                child: Padding(
+                  padding: EdgeInsets.only(top: 16),
+                  child: SvgPicture.asset(
+                    "assets/onBoard.svg",
+                    fit: BoxFit.contain,
+                    height: 200,
+                    width: 200,
+                  ),
                 ),
               ),
               Padding(
@@ -196,14 +202,14 @@ class _OnBoardState extends State<OnBoard> {
                           color: Colors.grey,
                           fontSize: size.height * .02,
                           fontFamily: 'Raleway'),
-                      value: choosedept,
+                      value: chooseDept,
                       items: _dropDownItem(),
                       onChanged: (value) {
                         setState(() {
-                          choosedept = value;
+                          chooseDept = value;
                         });
-                        prefs.setString(_key, choosedept);
-                        choosedept = value;
+                        prefs.setString("chooseDept", chooseDept);
+                        chooseDept = value;
                       },
                     ),
                   ),
@@ -247,14 +253,15 @@ class _OnBoardState extends State<OnBoard> {
                           color: Colors.grey,
                           fontSize: size.height * .02,
                           fontFamily: 'Raleway'),
-                      value: choosesem,
+                      value: chooseSem,
                       items: _dropDownItemsem(),
                       onChanged: (value) {
                         setState(() {
-                          choosesem = value;
+                          chooseSem = value;
                         });
 
-                        choosesem = value;
+                        prefs.setString("chooseSem", chooseSem);
+                        chooseSem = value;
                       },
                     ),
                   ),
@@ -278,6 +285,8 @@ class _OnBoardState extends State<OnBoard> {
                                 honor = value;
                                 print(honor);
                               });
+
+                              prefs.setBool("isHonor", honor);
                             }),
                         Text("Honor/Minor",
                             style: TextStyle(color: Colors.white)),
@@ -293,6 +302,8 @@ class _OnBoardState extends State<OnBoard> {
                                 oe = value;
                                 print(oe);
                               });
+
+                              prefs.setBool("isOe", oe);
                             }),
                         Text(
                           "Open Elective",
@@ -314,29 +325,38 @@ class _OnBoardState extends State<OnBoard> {
               onTap: () {
                 showInterstitialAd();
 
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => Home(
-                      data: Data(choosedept, choosesem, honor, oe),
-                    ),
-                  ),
-                );
+                if (widget.fromHome)
+                  Navigator.pop(context);
+                else
+                  prefs.setBool("showOnBoard", false).then((value) {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => Home(
+                            // data: Data(chooseDept, chooseSem, honor, oe),
+                            ),
+                      ),
+                    );
+                  });
               },
-              child: Container(
-                height: size.height * 0.06,
-                width: size.width * 0.4,
-                decoration: BoxDecoration(
-                    color: Colors.deepOrange,
-                    borderRadius: BorderRadius.circular(15)),
-                child: Center(
-                  child: Text(
-                    "Continue",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
-                        fontSize: size.height * 0.025,
-                        fontFamily: 'Raleway',
-                        letterSpacing: size.height * 0.002),
+              borderRadius: BorderRadius.circular(15),
+              child: Padding(
+                padding: EdgeInsets.all(4),
+                child: Container(
+                  height: size.height * 0.06,
+                  width: size.width * 0.4,
+                  decoration: BoxDecoration(
+                      color: Colors.deepOrange,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Center(
+                    child: Text(
+                      "Continue",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                          fontSize: size.height * 0.025,
+                          fontFamily: 'Raleway',
+                          letterSpacing: size.height * 0.002),
+                    ),
                   ),
                 ),
               ),
@@ -376,7 +396,15 @@ class _OnBoardState extends State<OnBoard> {
   }
 
   List<DropdownMenuItem<String>> _dropDownItemsem() {
-    List<String> ddl1 = ['1', '2', '3', '4', '5', '6', '7', '8'];
+    List<String> ddl1 = [
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+      '6',
+      '7',
+    ];
     return ddl1
         .map((value) => DropdownMenuItem(
               value: value,

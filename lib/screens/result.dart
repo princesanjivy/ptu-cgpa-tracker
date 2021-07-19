@@ -261,12 +261,16 @@ class Result extends StatelessWidget {
               onTap: () {
                 print(cgpa);
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(),
+                  ),
+                );
               },
               child: Container(
                 child: Center(
                     child: Text(
-                  "Go to Homepage",
+                  "Go to home",
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w800,

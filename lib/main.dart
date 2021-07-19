@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:ptu_cgpa_tracker/screens/home.dart';
 import 'package:ptu_cgpa_tracker/screens/intro.dart';
 import 'package:ptu_cgpa_tracker/screens/on_board.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool showIntro = true;
+  bool showOnBoard = true;
 
   @override
   void initState() {
@@ -36,7 +38,8 @@ class _MyAppState extends State<MyApp> {
   getData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
-      showIntro = sharedPreferences.get("showIntro");
+      showIntro = sharedPreferences.get("showIntro") ?? true;
+      showOnBoard = sharedPreferences.get("showOnBoard") ?? true;
     });
   }
 
@@ -59,7 +62,15 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
       ),
-      home: showIntro ? Intro() : OnBoard(),
+      home: showIntro
+          ? Intro(
+              viewIntro: false,
+            )
+          : showOnBoard
+              ? OnBoard(
+                  fromHome: false,
+                )
+              : Home(),
     );
   }
 }

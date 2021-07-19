@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ptu_cgpa_tracker/constants.dart';
 import 'package:ptu_cgpa_tracker/screens/on_board.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Intro extends StatefulWidget {
-  const Intro({Key key}) : super(key: key);
+  final bool viewIntro;
+  const Intro({Key key, this.viewIntro}) : super(key: key);
 
   @override
   _IntroState createState() => _IntroState();
@@ -22,28 +24,55 @@ class _IntroState extends State<Intro> {
             controller: pageController,
             children: [
               Slide(
-                hero: Image.asset("assets/newwelcome.png"),
+                viewIntro: widget.viewIntro,
+                hero: Hero(
+                  tag: "appIntro",
+                  child: SvgPicture.asset(
+                    "assets/intro1.svg",
+                    fit: BoxFit.contain,
+                    height: 200,
+                    width: 200,
+                  ),
+                ),
                 title: "Welcome PTUians!",
                 subtitle:
                     '"Department of Information Technology Proudly Presents "',
                 onNext: nextPage,
                 done: false,
                 skip: () {
-                  goToOnBoard(context);
+                  if (widget.viewIntro ?? false)
+                    Navigator.pop(context);
+                  else
+                    goToOnBoard(context);
                 },
               ),
               Slide(
-                hero: Image.asset("assets/intro1.png"),
+                viewIntro: widget.viewIntro,
+                hero: SvgPicture.asset(
+                  "assets/intro2.svg",
+                  fit: BoxFit.contain,
+                  height: 200,
+                  width: 200,
+                ),
                 title: "PTU CGPA Tracker!",
                 subtitle: '"Calculate your CGPA at ease"',
                 onNext: nextPage,
                 done: false,
                 skip: () {
-                  goToOnBoard(context);
+                  if (widget.viewIntro ?? false)
+                    Navigator.pop(context);
+                  else
+                    goToOnBoard(context);
                 },
               ),
               Slide(
-                hero: Image.asset("assets/intro2.png"),
+                viewIntro: widget.viewIntro,
+                hero: SvgPicture.asset(
+                  "assets/intro3.svg",
+                  fit: BoxFit.contain,
+                  height: 200,
+                  width: 200,
+                ),
                 title: "View Your CGPA!",
                 subtitle: '"Share with your homies"',
                 onNext: nextPage,
@@ -65,6 +94,7 @@ class _IntroState extends State<Intro> {
 }
 
 class Slide extends StatelessWidget {
+  final bool viewIntro;
   final Widget hero;
   final String title;
   final String subtitle;
@@ -79,6 +109,7 @@ class Slide extends StatelessWidget {
     this.onNext,
     this.done,
     this.skip,
+    this.viewIntro,
   });
 
   @override
@@ -131,7 +162,10 @@ class Slide extends StatelessWidget {
                 GestureDetector(
                   onTap: done
                       ? () {
-                          goToOnBoard(context);
+                          if (viewIntro ?? false)
+                            Navigator.pop(context);
+                          else
+                            goToOnBoard(context);
                         }
                       : onNext,
                   child: Text(

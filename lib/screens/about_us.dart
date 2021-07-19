@@ -14,7 +14,7 @@ class AboutUs extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.deepOrange,
         title: Text(
-          'ABOUT US',
+          "DEVELOPERS",
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'Raleway',
@@ -53,13 +53,16 @@ class AboutUs extends StatelessWidget {
           SizedBox(
             height: 32,
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 16),
-            child: SvgPicture.asset(
-              "assets/aboutUs.svg",
-              fit: BoxFit.contain,
-              height: 200,
-              width: 200,
+          Hero(
+            tag: "aboutUs",
+            child: Padding(
+              padding: EdgeInsets.only(top: 16),
+              child: SvgPicture.asset(
+                "assets/aboutUs.svg",
+                fit: BoxFit.contain,
+                height: 200,
+                width: 200,
+              ),
             ),
           ),
           Padding(
@@ -80,7 +83,7 @@ class AboutUs extends StatelessWidget {
                         radius: 45,
                         child: CircleAvatar(
                           radius: 26,
-                          backgroundImage: AssetImage('assets/456.jpg'),
+                          backgroundImage: AssetImage('assets/thamizh.jpg'),
                         ),
                       ),
                       title: Text(
