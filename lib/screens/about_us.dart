@@ -207,7 +207,7 @@ class AboutUs extends StatelessWidget {
                       title: Padding(
                         padding: EdgeInsets.fromLTRB(0, 20, 13, 10),
                         child: Text(
-                          'YADHAVA PRASSANA  G',
+                          'YADHAVA PRASANNA  G',
                           style: TextStyle(
                             fontFamily: "Raleway",
                             fontSize: 15,
