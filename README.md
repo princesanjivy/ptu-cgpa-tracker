@@ -16,8 +16,6 @@ Allows PTU students to calculate their CGPA, keep track of current semester’s 
 
 [Yuva]( https://githu.com/yuvachn )
 
-[Prince Sanjivy]( https://github.com/princesanjivy )
-
 ## Download from [Play Store]( https://play.google.com/store/apps/details?id=com.princeappstudio.ptu_cgpa_tracker )
 
 
