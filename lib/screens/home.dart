@@ -31,8 +31,8 @@ class _HomeState extends State<Home> {
     "7": "VII",
   };
 
-  String chooseDept = "";
-  String chooseSem = "";
+  String chooseDept = "IT";
+  String chooseSem = "3";
   bool honor = false;
   bool oe = false;
 
