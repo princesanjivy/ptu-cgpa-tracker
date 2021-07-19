@@ -195,7 +195,9 @@ void goToOnBoard(BuildContext context) async {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => OnBoard(),
+        builder: (context) => OnBoard(
+          fromHome: false,
+        ),
       ),
     );
   });

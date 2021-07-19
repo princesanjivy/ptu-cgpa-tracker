@@ -325,9 +325,9 @@ class _OnBoardState extends State<OnBoard> {
               onTap: () {
                 showInterstitialAd();
 
-                if (widget.fromHome)
+                if (widget.fromHome) {
                   Navigator.pop(context);
-                else
+                } else {
                   prefs.setBool("showOnBoard", false).then((value) {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
@@ -337,6 +337,7 @@ class _OnBoardState extends State<OnBoard> {
                       ),
                     );
                   });
+                }
               },
               borderRadius: BorderRadius.circular(15),
               child: Padding(
@@ -349,7 +350,7 @@ class _OnBoardState extends State<OnBoard> {
                       borderRadius: BorderRadius.circular(15)),
                   child: Center(
                     child: Text(
-                      "Continue",
+                      widget.fromHome ? "Change" : "Continue",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w800,

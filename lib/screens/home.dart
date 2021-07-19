@@ -201,13 +201,18 @@ class _HomeState extends State<Home> {
                 children: [
                   MyCustomCard(
                     onTap: () {
-                      Navigator.of(context).push(
+                      Navigator.of(context)
+                          .push(
                         MaterialPageRoute(
                           builder: (context) => OnBoard(
                             fromHome: true,
                           ),
                         ),
-                      );
+                      )
+                          .then((value) {
+                        read();
+                        setState(() {});
+                      });
                     },
                     tag: "onBoard",
                     title: "Change details",
