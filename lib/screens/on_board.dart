@@ -110,7 +110,7 @@ class _OnBoardState extends State<OnBoard> {
     super.dispose();
 
     bannerAd.dispose();
-    interstitialAd.dispose();
+    if (interstitialAd != null) interstitialAd.dispose();
   }
 
   _read() async {

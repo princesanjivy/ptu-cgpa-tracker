@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:ptu_cgpa_tracker/components/my_card.dart';
+import 'package:ptu_cgpa_tracker/constants.dart';
 import 'package:ptu_cgpa_tracker/screens/about_us.dart';
 import 'package:ptu_cgpa_tracker/screens/grade.dart';
 import 'package:ptu_cgpa_tracker/screens/info.dart';
@@ -36,11 +38,81 @@ class _HomeState extends State<Home> {
   bool honor = false;
   bool oe = false;
 
+  BannerAd bannerAd;
+  bool bannerAdLoaded = false;
+
+  InterstitialAd interstitialAd;
+  int maxFailedLoadAttempts = 3;
+  int numInterstitialLoadAttempts = 0;
+
   @override
   void initState() {
     super.initState();
 
     read();
+
+    _createBannerAd();
+    _createInterstitialAd();
+  }
+
+  _createInterstitialAd() {
+    InterstitialAd.load(
+      adUnitId: interstitialId,
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (ad) {
+          interstitialAd = ad;
+          numInterstitialLoadAttempts = 0;
+        },
+        onAdFailedToLoad: (error) {
+          numInterstitialLoadAttempts += 1;
+          interstitialAd = null;
+          if (numInterstitialLoadAttempts <= maxFailedLoadAttempts) {
+            _createInterstitialAd();
+          }
+        },
+      ),
+    );
+  }
+
+  void showInterstitialAd() {
+    if (interstitialAd == null) {
+      print("Ad not available");
+      return;
+    }
+    interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
+      onAdDismissedFullScreenContent: (InterstitialAd ad) {
+        ad.dispose();
+        _createInterstitialAd();
+      },
+      onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
+        ad.dispose();
+        _createInterstitialAd();
+      },
+    );
+
+    interstitialAd.show();
+    // interstitialAd = null;
+  }
+
+  _createBannerAd() {
+    bannerAd = BannerAd(
+      adUnitId: homeBannerId,
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) {
+          setState(() {
+            bannerAdLoaded = true;
+          });
+        },
+        onAdFailedToLoad: (ad, error) {
+          bannerAd.dispose();
+        },
+      ),
+    );
+
+    bannerAd.load();
   }
 
   read() async {
@@ -230,11 +302,15 @@ class _HomeState extends State<Home> {
                   ),
                   MyCustomCard(
                     onTap: () {
-                      Navigator.of(context).push(
+                      Navigator.of(context)
+                          .push(
                         MaterialPageRoute(
                           builder: (context) => AboutUs(),
                         ),
-                      );
+                      )
+                          .then((value) {
+                        showInterstitialAd();
+                      });
                     },
                     tag: "aboutUs",
                     title: "Developers",
@@ -242,13 +318,17 @@ class _HomeState extends State<Home> {
                   ),
                   MyCustomCard(
                     onTap: () {
-                      Navigator.of(context).push(
+                      Navigator.of(context)
+                          .push(
                         MaterialPageRoute(
                           builder: (context) => Intro(
                             viewIntro: true,
                           ),
                         ),
-                      );
+                      )
+                          .then((value) {
+                        showInterstitialAd();
+                      });
                     },
                     tag: "appIntro",
                     title: "App Intro",
@@ -256,11 +336,15 @@ class _HomeState extends State<Home> {
                   ),
                   MyCustomCard(
                     onTap: () {
-                      Navigator.of(context).push(
+                      Navigator.of(context)
+                          .push(
                         MaterialPageRoute(
                           builder: (context) => Info(),
                         ),
-                      );
+                      )
+                          .then((value) {
+                        showInterstitialAd();
+                      });
                     },
                     tag: "aboutApp",
                     title: "About App",
@@ -352,7 +436,8 @@ class _HomeState extends State<Home> {
             padding: EdgeInsets.all(32),
             child: InkWell(
               onTap: () {
-                Navigator.of(context).push(
+                Navigator.of(context)
+                    .push(
                   MaterialPageRoute(
                     builder: (context) => GradePage(
                       widget.key,
@@ -362,7 +447,10 @@ class _HomeState extends State<Home> {
                       oe,
                     ),
                   ),
-                );
+                )
+                    .then((value) {
+                  showInterstitialAd();
+                });
               },
               borderRadius: BorderRadius.circular(15),
               child: Padding(
@@ -389,6 +477,15 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
+      bottomNavigationBar: bannerAdLoaded
+          ? Container(
+              width: bannerAd.size.width.toDouble(),
+              height: bannerAd.size.height.toDouble(),
+              child: AdWidget(
+                ad: bannerAd,
+              ),
+            )
+          : null,
     );
   }
 }

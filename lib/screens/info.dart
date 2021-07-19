@@ -1,9 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:ptu_cgpa_tracker/constants.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Info extends StatelessWidget {
+class Info extends StatefulWidget {
+  @override
+  _InfoState createState() => _InfoState();
+}
+
+class _InfoState extends State<Info> {
+  BannerAd bannerAd;
+  bool bannerAdLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _createBannerAd();
+  }
+
+  _createBannerAd() {
+    bannerAd = BannerAd(
+      adUnitId: onBoardBannerId,
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) {
+          setState(() {
+            bannerAdLoaded = true;
+          });
+        },
+        onAdFailedToLoad: (ad, error) {
+          bannerAd.dispose();
+        },
+      ),
+    );
+
+    bannerAd.load();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -84,7 +121,7 @@ class Info extends StatelessWidget {
                   fontFamily: "Raleway",
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
-                  color: Colors.deepOrange,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -108,13 +145,22 @@ class Info extends StatelessWidget {
                   fontFamily: "Raleway",
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
-                  color: Colors.deepOrange,
+                  color: Colors.white,
                 ),
               ),
             )
           ],
         ),
       ),
+      bottomNavigationBar: bannerAdLoaded
+          ? Container(
+              width: bannerAd.size.width.toDouble(),
+              height: bannerAd.size.height.toDouble(),
+              child: AdWidget(
+                ad: bannerAd,
+              ),
+            )
+          : null,
     );
   }
 }

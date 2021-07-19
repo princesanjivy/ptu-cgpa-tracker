@@ -1,11 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lottie/lottie.dart';
-import 'package:ptu_cgpa_tracker/screens/home.dart';
+import 'package:ptu_cgpa_tracker/constants.dart';
 
-class Result extends StatelessWidget {
+class Result extends StatefulWidget {
   const Result(this.cgpa);
 
   final double cgpa;
+
+  @override
+  _ResultState createState() => _ResultState();
+}
+
+class _ResultState extends State<Result> {
+  BannerAd bannerAd;
+  bool bannerAdLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _createBannerAd();
+  }
+
+  _createBannerAd() {
+    bannerAd = BannerAd(
+      adUnitId: homeBannerId,
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) {
+          setState(() {
+            bannerAdLoaded = true;
+          });
+        },
+        onAdFailedToLoad: (ad, error) {
+          bannerAd.dispose();
+        },
+      ),
+    );
+
+    bannerAd.load();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +67,7 @@ class Result extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 10),
             ),
-            if (cgpa >= 0 && cgpa <= 5)
+            if (widget.cgpa >= 0 && widget.cgpa <= 5)
               Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Column(children: [
@@ -60,7 +96,7 @@ class Result extends StatelessWidget {
                             fontFamily: 'Raleway'),
                         children: <TextSpan>[
                           TextSpan(
-                            text: cgpa.toStringAsFixed(2),
+                            text: widget.cgpa.toStringAsFixed(2),
                             style: TextStyle(
                               fontFamily: "Raleway",
                               fontSize: 50,
@@ -86,7 +122,7 @@ class Result extends StatelessWidget {
                   ),
                 ]),
               ),
-            if (cgpa > 5 && cgpa <= 7)
+            if (widget.cgpa > 5 && widget.cgpa <= 7)
               Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Column(children: [
@@ -115,7 +151,7 @@ class Result extends StatelessWidget {
                             fontFamily: 'Raleway'),
                         children: <TextSpan>[
                           TextSpan(
-                            text: cgpa.toStringAsFixed(2),
+                            text: widget.cgpa.toStringAsFixed(2),
                             style: TextStyle(
                               fontFamily: 'Raleway',
                               fontSize: 50,
@@ -140,7 +176,7 @@ class Result extends StatelessWidget {
                   ),
                 ]),
               ),
-            if (cgpa > 7 && cgpa <= 9)
+            if (widget.cgpa > 7 && widget.cgpa <= 9)
               Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Column(children: [
@@ -171,7 +207,7 @@ class Result extends StatelessWidget {
                             fontFamily: 'Raleway'),
                         children: <TextSpan>[
                           TextSpan(
-                            text: cgpa.toStringAsFixed(2),
+                            text: widget.cgpa.toStringAsFixed(2),
                             style: TextStyle(
                               fontSize: 50,
                               fontWeight: FontWeight.w500,
@@ -198,7 +234,7 @@ class Result extends StatelessWidget {
                   ),
                 ]),
               ),
-            if (cgpa > 9 && cgpa <= 10)
+            if (widget.cgpa > 9 && widget.cgpa <= 10)
               Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: Column(children: [
@@ -227,7 +263,7 @@ class Result extends StatelessWidget {
                             fontFamily: 'Raleway'),
                         children: <TextSpan>[
                           TextSpan(
-                            text: cgpa.toStringAsFixed(2),
+                            text: widget.cgpa.toStringAsFixed(2),
                             style: TextStyle(
                               fontFamily: "Raleway",
                               fontSize: 50,
@@ -259,13 +295,8 @@ class Result extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                print(cgpa);
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Home(),
-                  ),
-                );
+                print(widget.cgpa);
+                Navigator.pop(context);
               },
               child: Container(
                 child: Center(
@@ -288,6 +319,15 @@ class Result extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: bannerAdLoaded
+          ? Container(
+              width: bannerAd.size.width.toDouble(),
+              height: bannerAd.size.height.toDouble(),
+              child: AdWidget(
+                ad: bannerAd,
+              ),
+            )
+          : null,
     );
   }
 }

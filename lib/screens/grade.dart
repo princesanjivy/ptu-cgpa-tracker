@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:ptu_cgpa_tracker/constants.dart';
 import 'package:ptu_cgpa_tracker/screens/result.dart';
 
 class GradePage extends StatefulWidget {
@@ -14,9 +16,55 @@ class GradePage extends StatefulWidget {
 }
 
 class _GradePageState extends State<GradePage> {
+  InterstitialAd interstitialAd;
+  int maxFailedLoadAttempts = 3;
+  int numInterstitialLoadAttempts = 0;
+
   @override
   void initState() {
     super.initState();
+
+    _createInterstitialAd();
+  }
+
+  _createInterstitialAd() {
+    InterstitialAd.load(
+      adUnitId: betweenInterstitialId,
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (ad) {
+          interstitialAd = ad;
+          numInterstitialLoadAttempts = 0;
+        },
+        onAdFailedToLoad: (error) {
+          numInterstitialLoadAttempts += 1;
+          interstitialAd = null;
+          if (numInterstitialLoadAttempts <= maxFailedLoadAttempts) {
+            _createInterstitialAd();
+          }
+        },
+      ),
+    );
+  }
+
+  void showInterstitialAd() {
+    if (interstitialAd == null) {
+      print("Ad not available");
+      return;
+    }
+    interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
+      onAdDismissedFullScreenContent: (InterstitialAd ad) {
+        ad.dispose();
+        _createInterstitialAd();
+      },
+      onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
+        ad.dispose();
+        _createInterstitialAd();
+      },
+    );
+
+    interstitialAd.show();
+    // interstitialAd = null;
   }
 
   double finalhonour = 0.0;
@@ -1443,6 +1491,8 @@ class _GradePageState extends State<GradePage> {
                           creditsum = 0.0;
                         });
                       }
+
+                      showInterstitialAd();
 
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
