@@ -13,16 +13,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
-  // final Data data;
-
-  Home({Key key}) : super(key: key);
-
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  SharedPreferences prefs;
+  SharedPreferences? prefs;
   final Map roman = {
     "1": "I",
     "2": "II",
@@ -38,10 +34,10 @@ class _HomeState extends State<Home> {
   bool honor = false;
   bool oe = false;
 
-  BannerAd bannerAd;
+  BannerAd? bannerAd;
   bool bannerAdLoaded = false;
 
-  InterstitialAd interstitialAd;
+  InterstitialAd? interstitialAd;
   int maxFailedLoadAttempts = 3;
   int numInterstitialLoadAttempts = 0;
 
@@ -80,7 +76,7 @@ class _HomeState extends State<Home> {
       print("Ad not available");
       return;
     }
-    interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
+    interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
       onAdDismissedFullScreenContent: (InterstitialAd ad) {
         ad.dispose();
         _createInterstitialAd();
@@ -91,7 +87,7 @@ class _HomeState extends State<Home> {
       },
     );
 
-    interstitialAd.show();
+    interstitialAd!.show();
     // interstitialAd = null;
   }
 
@@ -107,22 +103,22 @@ class _HomeState extends State<Home> {
           });
         },
         onAdFailedToLoad: (ad, error) {
-          bannerAd.dispose();
+          bannerAd!.dispose();
         },
       ),
     );
 
-    bannerAd.load();
+    bannerAd!.load();
   }
 
   read() async {
     prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      chooseDept = prefs.getString("chooseDept") ?? "IT";
-      chooseSem = prefs.getString("chooseSem") ?? "3";
-      honor = prefs.getBool("isHonor") ?? false;
-      oe = prefs.getBool("isOe") ?? false;
+      chooseDept = prefs!.getString("chooseDept") ?? "IT";
+      chooseSem = prefs!.getString("chooseSem") ?? "3";
+      honor = prefs!.getBool("isHonor") ?? false;
+      oe = prefs!.getBool("isOe") ?? false;
     });
   }
 
@@ -440,7 +436,6 @@ class _HomeState extends State<Home> {
                     .push(
                   MaterialPageRoute(
                     builder: (context) => GradePage(
-                      widget.key,
                       chooseDept,
                       chooseSem,
                       honor,
@@ -479,10 +474,10 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: bannerAdLoaded
           ? Container(
-              width: bannerAd.size.width.toDouble(),
-              height: bannerAd.size.height.toDouble(),
+              width: bannerAd!.size.width.toDouble(),
+              height: bannerAd!.size.height.toDouble(),
               child: AdWidget(
-                ad: bannerAd,
+                ad: bannerAd!,
               ),
             )
           : null,

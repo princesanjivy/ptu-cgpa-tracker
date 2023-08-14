@@ -13,7 +13,7 @@ class Result extends StatefulWidget {
 }
 
 class _ResultState extends State<Result> {
-  BannerAd bannerAd;
+  BannerAd? bannerAd;
   bool bannerAdLoaded = false;
 
   @override
@@ -35,12 +35,12 @@ class _ResultState extends State<Result> {
           });
         },
         onAdFailedToLoad: (ad, error) {
-          bannerAd.dispose();
+          bannerAd!.dispose();
         },
       ),
     );
 
-    bannerAd.load();
+    bannerAd!.load();
   }
 
   @override
@@ -321,10 +321,10 @@ class _ResultState extends State<Result> {
       ),
       bottomNavigationBar: bannerAdLoaded
           ? Container(
-              width: bannerAd.size.width.toDouble(),
-              height: bannerAd.size.height.toDouble(),
+              width: bannerAd!.size.width.toDouble(),
+              height: bannerAd!.size.height.toDouble(),
               child: AdWidget(
-                ad: bannerAd,
+                ad: bannerAd!,
               ),
             )
           : null,

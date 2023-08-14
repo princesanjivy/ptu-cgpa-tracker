@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Intro extends StatefulWidget {
   final bool viewIntro;
-  const Intro({Key key, this.viewIntro}) : super(key: key);
+  const Intro({required this.viewIntro});
 
   @override
   _IntroState createState() => _IntroState();
@@ -76,7 +76,7 @@ class _IntroState extends State<Intro> {
                 title: "View Your CGPA!",
                 subtitle: '"Share with your homies"',
                 onNext: nextPage,
-                done: true,
+                done: true, skip: () {  },
               ),
             ],
           ),
@@ -103,13 +103,13 @@ class Slide extends StatelessWidget {
   final VoidCallback skip;
 
   Slide({
-    this.hero,
-    this.title,
-    this.subtitle,
-    this.onNext,
-    this.done,
-    this.skip,
-    this.viewIntro,
+    required this.hero,
+    required this.title,
+    required this.subtitle,
+    required this.onNext,
+    required this.done,
+    required this.skip,
+    required this.viewIntro,
   });
 
   @override

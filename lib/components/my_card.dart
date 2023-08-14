@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MyCustomCard extends StatelessWidget {
-  final Function onTap;
+  final VoidCallback onTap;
   final String illustrationPath, title, tag;
 
   MyCustomCard({
-    this.onTap,
-    this.illustrationPath,
-    this.title,
-    this.tag,
+    required this.onTap,
+    required this.illustrationPath,
+    required this.title,
+    required this.tag,
   });
 
   @override

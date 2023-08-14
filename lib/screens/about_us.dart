@@ -12,7 +12,7 @@ class AboutUs extends StatefulWidget {
 }
 
 class _AboutUsState extends State<AboutUs> {
-  BannerAd bannerAd;
+  late BannerAd bannerAd;
   bool bannerAdLoaded = false;
 
   @override
@@ -361,7 +361,7 @@ class _AboutUsState extends State<AboutUs> {
                         ),
                       ),
                       title: Text(
-                        'PRINCE  SANJIVY',
+                        'SANJIVY',
                         style: TextStyle(
                           fontFamily: "Raleway",
                           fontSize: 15,
@@ -439,7 +439,7 @@ class _AboutUsState extends State<AboutUs> {
                             child: IconButton(
                               icon: Icon(FontAwesomeIcons.globeAmericas),
                               onPressed: () => launch(
-                                  'https://princesanjivy-portfolio.web.app/'),
+                                  'https:linktr.ee/princesanjivy'),
                               iconSize: 30,
                               color: Colors.deepOrange,
                             ),

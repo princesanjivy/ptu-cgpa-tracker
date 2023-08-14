@@ -16,22 +16,22 @@ class Data {
 
 class OnBoard extends StatefulWidget {
   final bool fromHome;
-  OnBoard({Key key, this.fromHome}) : super(key: key);
+  OnBoard({required this.fromHome});
 
   @override
   _OnBoardState createState() => _OnBoardState();
 }
 
 class _OnBoardState extends State<OnBoard> {
-  String chooseSem;
-  String chooseDept;
+  String chooseSem = "";
+  String chooseDept = "";
 
-  SharedPreferences prefs;
+  SharedPreferences? prefs;
 
-  BannerAd bannerAd;
+  BannerAd? bannerAd;
   bool bannerAdLoaded = false;
 
-  InterstitialAd interstitialAd;
+  InterstitialAd? interstitialAd;
   int maxFailedLoadAttempts = 3;
   int numInterstitialLoadAttempts = 0;
 
@@ -57,12 +57,12 @@ class _OnBoardState extends State<OnBoard> {
           });
         },
         onAdFailedToLoad: (ad, error) {
-          bannerAd.dispose();
+          bannerAd!.dispose();
         },
       ),
     );
 
-    bannerAd.load();
+    bannerAd!.load();
   }
 
   _createInterstitialAd() {
@@ -90,7 +90,7 @@ class _OnBoardState extends State<OnBoard> {
       print("Ad not available");
       return;
     }
-    interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
+    interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
       onAdDismissedFullScreenContent: (InterstitialAd ad) {
         ad.dispose();
         _createInterstitialAd();
@@ -101,7 +101,7 @@ class _OnBoardState extends State<OnBoard> {
       },
     );
 
-    interstitialAd.show();
+    interstitialAd!.show();
     // interstitialAd = null;
   }
 
@@ -109,18 +109,18 @@ class _OnBoardState extends State<OnBoard> {
   void dispose() {
     super.dispose();
 
-    bannerAd.dispose();
-    if (interstitialAd != null) interstitialAd.dispose();
+    bannerAd!.dispose();
+    if (interstitialAd != null) interstitialAd!.dispose();
   }
 
   _read() async {
     prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      chooseDept = prefs.getString("chooseDept") ?? "IT";
-      chooseSem = prefs.getString("chooseSem") ?? "3";
-      honor = prefs.getBool("isHonor") ?? false;
-      oe = prefs.getBool("isOe") ?? false;
+      chooseDept = prefs!.getString("chooseDept") ?? "IT";
+      chooseSem = prefs!.getString("chooseSem") ?? "3";
+      honor = prefs!.getBool("isHonor") ?? false;
+      oe = prefs!.getBool("isOe") ?? false;
     });
   }
 
@@ -206,10 +206,10 @@ class _OnBoardState extends State<OnBoard> {
                       items: _dropDownItem(),
                       onChanged: (value) {
                         setState(() {
-                          chooseDept = value;
+                          chooseDept = value!;
                         });
-                        prefs.setString("chooseDept", chooseDept);
-                        chooseDept = value;
+                        prefs!.setString("chooseDept", chooseDept);
+                        chooseDept = value!;
                       },
                     ),
                   ),
@@ -257,11 +257,11 @@ class _OnBoardState extends State<OnBoard> {
                       items: _dropDownItemsem(),
                       onChanged: (value) {
                         setState(() {
-                          chooseSem = value;
+                          chooseSem = value!;
                         });
 
-                        prefs.setString("chooseSem", chooseSem);
-                        chooseSem = value;
+                        prefs!.setString("chooseSem", chooseSem);
+                        chooseSem = value!;
                       },
                     ),
                   ),
@@ -280,13 +280,13 @@ class _OnBoardState extends State<OnBoard> {
                             activeColor: Colors.deepOrange,
                             tristate: false,
                             value: honor,
-                            onChanged: (bool value) {
+                            onChanged: (bool? value) {
                               setState(() {
-                                honor = value;
+                                honor = value!;
                                 print(honor);
                               });
 
-                              prefs.setBool("isHonor", honor);
+                              prefs!.setBool("isHonor", honor);
                             }),
                         Text("Honor/Minor",
                             style: TextStyle(color: Colors.white)),
@@ -297,13 +297,13 @@ class _OnBoardState extends State<OnBoard> {
                         Checkbox(
                             activeColor: Colors.deepOrange,
                             value: oe,
-                            onChanged: (bool value) {
+                            onChanged: (bool? value) {
                               setState(() {
-                                oe = value;
+                                oe = value!;
                                 print(oe);
                               });
 
-                              prefs.setBool("isOe", oe);
+                              prefs!.setBool("isOe", oe);
                             }),
                         Text(
                           "Open Elective",
@@ -328,7 +328,7 @@ class _OnBoardState extends State<OnBoard> {
                 if (widget.fromHome) {
                   Navigator.pop(context);
                 } else {
-                  prefs.setBool("showOnBoard", false).then((value) {
+                  prefs!.setBool("showOnBoard", false).then((value) {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
                         builder: (context) => Home(
@@ -367,10 +367,10 @@ class _OnBoardState extends State<OnBoard> {
       ),
       bottomNavigationBar: bannerAdLoaded
           ? Container(
-              width: bannerAd.size.width.toDouble(),
-              height: bannerAd.size.height.toDouble(),
+              width: bannerAd!.size.width.toDouble(),
+              height: bannerAd!.size.height.toDouble(),
               child: AdWidget(
-                ad: bannerAd,
+                ad: bannerAd!,
               ),
             )
           : null,
@@ -387,6 +387,7 @@ class _OnBoardState extends State<OnBoard> {
       "EIE",
       "CIE",
       "EEE",
+      "MT",
     ];
     return ddl
         .map((value) => DropdownMenuItem(

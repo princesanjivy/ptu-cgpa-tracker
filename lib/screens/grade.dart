@@ -5,8 +5,8 @@ import 'package:ptu_cgpa_tracker/constants.dart';
 import 'package:ptu_cgpa_tracker/screens/result.dart';
 
 class GradePage extends StatefulWidget {
-  GradePage(Key key, this.dept, this.sem, this.honor, this.oe)
-      : super(key: key);
+  GradePage(this.dept, this.sem, this.honor, this.oe);
+
   final String dept;
   final String sem;
   final bool honor;
@@ -16,7 +16,7 @@ class GradePage extends StatefulWidget {
 }
 
 class _GradePageState extends State<GradePage> {
-  InterstitialAd interstitialAd;
+  InterstitialAd? interstitialAd;
   int maxFailedLoadAttempts = 3;
   int numInterstitialLoadAttempts = 0;
 
@@ -52,7 +52,7 @@ class _GradePageState extends State<GradePage> {
       print("Ad not available");
       return;
     }
-    interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
+    interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
       onAdDismissedFullScreenContent: (InterstitialAd ad) {
         ad.dispose();
         _createInterstitialAd();
@@ -63,27 +63,27 @@ class _GradePageState extends State<GradePage> {
       },
     );
 
-    interstitialAd.show();
+    interstitialAd!.show();
     // interstitialAd = null;
   }
 
-  double finalhonour = 0.0;
+  double finalHonour = 0.0;
 
-  double finaloe = 0.0;
+  double finalOpenElective = 0.0;
 
-  double openelective = 1.0;
+  double openElective = 1.0;
 
   double honor = 1.0;
 
-  double creditsum = 0.0;
+  double creditSum = 0.0;
 
   double cgpa = 0;
 
   double cgpa1 = 0;
 
-  double subsum = 0.0;
+  double subSum = 0.0;
 
-  int subcount = 0;
+  int subCount = 0;
 
   int index1 = 0;
 
@@ -178,20 +178,20 @@ class _GradePageState extends State<GradePage> {
               children: [
                 //LISTVIEW BUILDEER WITHOUT HONOUR AND OPEN ELECTIVE
                 ListView.builder(
-                    itemCount: snapshots.data.docs.length,
+                    itemCount: snapshots.data!.docs.length,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
-                      print(snapshots.data.docs.length);
-                      snapshots.data.docs.forEach((element) {
-                        if (credit.length < snapshots.data.docs.length)
+                      print(snapshots.data!.docs.length);
+                      snapshots.data!.docs.forEach((element) {
+                        if (credit.length < snapshots.data!.docs.length)
                           credit.add(0.0);
                       });
                       return Padding(
                         padding: EdgeInsets.all(size.height * .01),
                         child: Container(
                           padding: EdgeInsets.all(size.height * .0005),
-                          height: snapshots.data.docs[index]['course']
+                          height: snapshots.data!.docs[index]['course']
                                       .toString()
                                       .length >
                                   39
@@ -218,7 +218,7 @@ class _GradePageState extends State<GradePage> {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        snapshots.data.docs[index]['course'],
+                                        snapshots.data!.docs[index]['course'],
                                         style: TextStyle(
                                           fontSize: size.height * .021,
                                           color: Colors.white,
@@ -244,7 +244,7 @@ class _GradePageState extends State<GradePage> {
                                               if (index == index1) {
                                                 subject1[index] = 10.0;
                                                 credit[index] = double.parse(
-                                                    snapshots.data.docs[index]
+                                                    snapshots.data!.docs[index]
                                                         ['credit']);
                                                 score[index] = (credit[index] *
                                                     subject1[index]);
@@ -308,7 +308,7 @@ class _GradePageState extends State<GradePage> {
                                               if (index == index1) {
                                                 subject1[index] = 9;
                                                 credit[index] = double.parse(
-                                                    snapshots.data.docs[index]
+                                                    snapshots.data!.docs[index]
                                                         ['credit']);
                                                 score[index] = (credit[index] *
                                                     subject1[index]);
@@ -371,7 +371,7 @@ class _GradePageState extends State<GradePage> {
                                               if (index == index1) {
                                                 subject1[index] = 8;
                                                 credit[index] = double.parse(
-                                                    snapshots.data.docs[index]
+                                                    snapshots.data!.docs[index]
                                                         ['credit']);
                                                 score[index] = (credit[index] *
                                                     subject1[index]);
@@ -434,7 +434,7 @@ class _GradePageState extends State<GradePage> {
                                               if (index == index1) {
                                                 subject1[index] = 7;
                                                 credit[index] = double.parse(
-                                                    snapshots.data.docs[index]
+                                                    snapshots.data!.docs[index]
                                                         ['credit']);
                                                 score[index] = (credit[index] *
                                                     subject1[index]);
@@ -497,7 +497,7 @@ class _GradePageState extends State<GradePage> {
                                               if (index == index1) {
                                                 subject1[index] = 6;
                                                 credit[index] = double.parse(
-                                                    snapshots.data.docs[index]
+                                                    snapshots.data!.docs[index]
                                                         ['credit']);
                                                 score[index] = (credit[index] *
                                                     subject1[index]);
@@ -560,7 +560,7 @@ class _GradePageState extends State<GradePage> {
                                               if (index == index1) {
                                                 subject1[index] = 5;
                                                 credit[index] = double.parse(
-                                                    snapshots.data.docs[index]
+                                                    snapshots.data!.docs[index]
                                                         ['credit']);
                                                 score[index] = (credit[index] *
                                                     subject1[index]);
@@ -623,7 +623,7 @@ class _GradePageState extends State<GradePage> {
                                               if (index == index1) {
                                                 subject1[index] = 0;
                                                 credit[index] = double.parse(
-                                                    snapshots.data.docs[index]
+                                                    snapshots.data!.docs[index]
                                                         ['credit']);
                                                 score[index] = (credit[index] *
                                                     subject1[index]);
@@ -1083,27 +1083,27 @@ class _GradePageState extends State<GradePage> {
                                         setState(() {
                                           x = 2;
                                           _isActiveS = true;
-                                          openelective = 10.0;
+                                          openElective = 10.0;
                                         });
                                       },
                                       onDoubleTap: () {
                                         setState(() {
                                           _isActiveS = !_isActiveS;
-                                          openelective = 1.0;
+                                          openElective = 1.0;
                                         });
                                       },
                                       child: CircleAvatar(
                                         radius: size.height * .026,
                                         backgroundColor: _isActiveS &&
-                                                openelective > 0 &&
-                                                openelective == 10
+                                                openElective > 0 &&
+                                                openElective == 10
                                             ? Colors.deepOrange
                                             : Colors.white,
                                         child: CircleAvatar(
                                           radius: size.height * .024,
                                           backgroundColor: _isActiveS &&
-                                                  openelective > 0 &&
-                                                  openelective == 10
+                                                  openElective > 0 &&
+                                                  openElective == 10
                                               ? Colors.white
                                               : Colors.deepOrange,
                                           child: Text(
@@ -1111,8 +1111,8 @@ class _GradePageState extends State<GradePage> {
                                             style: TextStyle(
                                                 fontSize: 23,
                                                 color: _isActiveS &&
-                                                        openelective > 0 &&
-                                                        openelective == 10
+                                                        openElective > 0 &&
+                                                        openElective == 10
                                                     ? Colors.deepOrange
                                                     : Colors.white),
                                           ),
@@ -1127,27 +1127,27 @@ class _GradePageState extends State<GradePage> {
                                         setState(() {
                                           x = 2;
                                           _isActiveA = true;
-                                          openelective = 9.0;
+                                          openElective = 9.0;
                                         });
                                       },
                                       onDoubleTap: () {
                                         setState(() {
                                           _isActiveA = !_isActiveA;
-                                          openelective = 1.0;
+                                          openElective = 1.0;
                                         });
                                       },
                                       child: CircleAvatar(
                                         radius: size.height * .026,
                                         backgroundColor: _isActiveA &&
-                                                openelective > 0 &&
-                                                openelective == 9
+                                                openElective > 0 &&
+                                                openElective == 9
                                             ? Colors.deepOrange
                                             : Colors.white,
                                         child: CircleAvatar(
                                           radius: size.height * .024,
                                           backgroundColor: _isActiveA &&
-                                                  openelective > 0 &&
-                                                  openelective == 9
+                                                  openElective > 0 &&
+                                                  openElective == 9
                                               ? Colors.white
                                               : Colors.deepOrange,
                                           child: Text(
@@ -1155,8 +1155,8 @@ class _GradePageState extends State<GradePage> {
                                             style: TextStyle(
                                                 fontSize: 23,
                                                 color: _isActiveA &&
-                                                        openelective > 0 &&
-                                                        openelective == 9
+                                                        openElective > 0 &&
+                                                        openElective == 9
                                                     ? Colors.deepOrange
                                                     : Colors.white),
                                           ),
@@ -1171,27 +1171,27 @@ class _GradePageState extends State<GradePage> {
                                         setState(() {
                                           x = 2;
                                           _isActiveB = true;
-                                          openelective = 8.0;
+                                          openElective = 8.0;
                                         });
                                       },
                                       onDoubleTap: () {
                                         setState(() {
                                           _isActiveB = !_isActiveB;
-                                          openelective = 1.0;
+                                          openElective = 1.0;
                                         });
                                       },
                                       child: CircleAvatar(
                                         radius: size.height * .026,
                                         backgroundColor: _isActiveB &&
-                                                openelective > 0 &&
-                                                openelective == 8
+                                                openElective > 0 &&
+                                                openElective == 8
                                             ? Colors.deepOrange
                                             : Colors.white,
                                         child: CircleAvatar(
                                           radius: size.height * .024,
                                           backgroundColor: _isActiveB &&
-                                                  openelective > 0 &&
-                                                  openelective == 8
+                                                  openElective > 0 &&
+                                                  openElective == 8
                                               ? Colors.white
                                               : Colors.deepOrange,
                                           child: Text(
@@ -1199,8 +1199,8 @@ class _GradePageState extends State<GradePage> {
                                             style: TextStyle(
                                                 fontSize: 23,
                                                 color: _isActiveB &&
-                                                        openelective > 0 &&
-                                                        openelective == 8
+                                                        openElective > 0 &&
+                                                        openElective == 8
                                                     ? Colors.deepOrange
                                                     : Colors.white),
                                           ),
@@ -1215,27 +1215,27 @@ class _GradePageState extends State<GradePage> {
                                         setState(() {
                                           x = 2;
                                           _isActiveC = true;
-                                          openelective = 7.0;
+                                          openElective = 7.0;
                                         });
                                       },
                                       onDoubleTap: () {
                                         setState(() {
                                           _isActiveC = !_isActiveC;
-                                          openelective = 1.0;
+                                          openElective = 1.0;
                                         });
                                       },
                                       child: CircleAvatar(
                                         radius: size.height * .026,
                                         backgroundColor: _isActiveC &&
-                                                openelective > 0 &&
-                                                openelective == 7
+                                                openElective > 0 &&
+                                                openElective == 7
                                             ? Colors.deepOrange
                                             : Colors.white,
                                         child: CircleAvatar(
                                           radius: size.height * .024,
                                           backgroundColor: _isActiveC &&
-                                                  openelective > 0 &&
-                                                  openelective == 7
+                                                  openElective > 0 &&
+                                                  openElective == 7
                                               ? Colors.white
                                               : Colors.deepOrange,
                                           child: Text(
@@ -1243,8 +1243,8 @@ class _GradePageState extends State<GradePage> {
                                             style: TextStyle(
                                                 fontSize: 23,
                                                 color: _isActiveC &&
-                                                        openelective > 0 &&
-                                                        openelective == 7
+                                                        openElective > 0 &&
+                                                        openElective == 7
                                                     ? Colors.deepOrange
                                                     : Colors.white),
                                           ),
@@ -1259,29 +1259,29 @@ class _GradePageState extends State<GradePage> {
                                         setState(() {
                                           x = 2;
                                           _isActiveD = true;
-                                          openelective = 6.0;
+                                          openElective = 6.0;
                                           print(honor);
                                         });
                                       },
                                       onDoubleTap: () {
                                         setState(() {
                                           _isActiveD = !_isActiveD;
-                                          openelective = 1.0;
-                                          print(openelective);
+                                          openElective = 1.0;
+                                          print(openElective);
                                         });
                                       },
                                       child: CircleAvatar(
                                         radius: size.height * .026,
                                         backgroundColor: _isActiveD &&
-                                                openelective > 0 &&
-                                                openelective == 6
+                                                openElective > 0 &&
+                                                openElective == 6
                                             ? Colors.deepOrange
                                             : Colors.white,
                                         child: CircleAvatar(
                                           radius: size.height * .024,
                                           backgroundColor: _isActiveD &&
-                                                  openelective > 0 &&
-                                                  openelective == 6
+                                                  openElective > 0 &&
+                                                  openElective == 6
                                               ? Colors.white
                                               : Colors.deepOrange,
                                           child: Text(
@@ -1289,8 +1289,8 @@ class _GradePageState extends State<GradePage> {
                                             style: TextStyle(
                                                 fontSize: 23,
                                                 color: _isActiveD &&
-                                                        openelective > 0 &&
-                                                        openelective == 6
+                                                        openElective > 0 &&
+                                                        openElective == 6
                                                     ? Colors.deepOrange
                                                     : Colors.white),
                                           ),
@@ -1305,27 +1305,27 @@ class _GradePageState extends State<GradePage> {
                                         setState(() {
                                           x = 2;
                                           _isActiveE = true;
-                                          openelective = 5.0;
+                                          openElective = 5.0;
                                         });
                                       },
                                       onDoubleTap: () {
                                         setState(() {
                                           _isActiveE = !_isActiveE;
-                                          openelective = 1.0;
+                                          openElective = 1.0;
                                         });
                                       },
                                       child: CircleAvatar(
                                         radius: size.height * .026,
                                         backgroundColor: _isActiveE &&
-                                                openelective > 0 &&
-                                                openelective == 5
+                                                openElective > 0 &&
+                                                openElective == 5
                                             ? Colors.deepOrange
                                             : Colors.white,
                                         child: CircleAvatar(
                                           radius: size.height * .024,
                                           backgroundColor: _isActiveE &&
-                                                  openelective > 0 &&
-                                                  openelective == 5
+                                                  openElective > 0 &&
+                                                  openElective == 5
                                               ? Colors.white
                                               : Colors.deepOrange,
                                           child: Text(
@@ -1333,8 +1333,8 @@ class _GradePageState extends State<GradePage> {
                                             style: TextStyle(
                                                 fontSize: 23,
                                                 color: _isActiveE &&
-                                                        openelective > 0 &&
-                                                        openelective == 5
+                                                        openElective > 0 &&
+                                                        openElective == 5
                                                     ? Colors.deepOrange
                                                     : Colors.white),
                                           ),
@@ -1349,25 +1349,25 @@ class _GradePageState extends State<GradePage> {
                                         setState(() {
                                           x = 2;
                                           _isActiveF = true;
-                                          openelective = 0.0;
+                                          openElective = 0.0;
                                         });
                                       },
                                       onDoubleTap: () {
                                         setState(() {
                                           _isActiveF = !_isActiveF;
-                                          openelective = 1.0;
+                                          openElective = 1.0;
                                         });
                                       },
                                       child: CircleAvatar(
                                         radius: size.height * .026,
                                         backgroundColor:
-                                            _isActiveF && openelective == 0
+                                            _isActiveF && openElective == 0
                                                 ? Colors.deepOrange
                                                 : Colors.white,
                                         child: CircleAvatar(
                                           radius: size.height * .024,
                                           backgroundColor:
-                                              _isActiveF && openelective == 0
+                                              _isActiveF && openElective == 0
                                                   ? Colors.white
                                                   : Colors.deepOrange,
                                           child: Text(
@@ -1375,7 +1375,7 @@ class _GradePageState extends State<GradePage> {
                                             style: TextStyle(
                                                 fontSize: 23,
                                                 color: _isActiveF &&
-                                                        openelective == 0
+                                                        openElective == 0
                                                     ? Colors.deepOrange
                                                     : Colors.white),
                                           ),
@@ -1399,96 +1399,96 @@ class _GradePageState extends State<GradePage> {
                     if (!credit.contains(0.0)) {
                       if (widget.honor == false && widget.oe == false) {
                         credit.forEach((element) {
-                          creditsum += element;
+                          creditSum += element;
                         });
 
                         score.forEach((element) {
                           if (element == 1.0) {
                             print("null");
                           } else {
-                            subsum = subsum + element;
-                            subcount += 1;
+                            subSum = subSum + element;
+                            subCount += 1;
                           }
                         });
                         setState(() {
-                          cgpa = subsum / creditsum;
-                          subsum = 0.0;
-                          creditsum = 0.0;
+                          cgpa = subSum / creditSum;
+                          subSum = 0.0;
+                          creditSum = 0.0;
                         });
                       }
                       if (widget.honor == true && widget.oe == false) {
                         credit.forEach((element) {
-                          creditsum += element;
+                          creditSum += element;
                         });
-                        print(creditsum);
+                        print(creditSum);
                         score.forEach((element) {
                           if (element == 1.0) {
                             print("null");
                           } else {
-                            subsum = subsum + element;
-                            subcount += 1;
+                            subSum = subSum + element;
+                            subCount += 1;
                           }
                         });
-                        finalhonour = honor * 4;
-                        subsum = subsum + finalhonour;
-                        subcount = subcount + 1;
-                        creditsum = creditsum + 4;
+                        finalHonour = honor * 4;
+                        subSum = subSum + finalHonour;
+                        subCount = subCount + 1;
+                        creditSum = creditSum + 4;
                         setState(() {
-                          cgpa = subsum / creditsum;
-                          subsum = 0.0;
-                          creditsum = 0.0;
+                          cgpa = subSum / creditSum;
+                          subSum = 0.0;
+                          creditSum = 0.0;
                         });
                       }
                       if (widget.honor == false && widget.oe == true) {
                         credit.forEach((element) {
-                          creditsum += element;
+                          creditSum += element;
                         });
 
                         score.forEach((element) {
                           if (element == 1.0) {
                             print("null");
                           } else {
-                            subsum = subsum + element;
-                            subcount += 1;
+                            subSum = subSum + element;
+                            subCount += 1;
                           }
                         });
-                        finaloe = openelective * 3;
-                        subsum = subsum + finaloe;
-                        subcount = subcount + 1;
-                        creditsum = creditsum + 3;
+                        finalOpenElective = openElective * 3;
+                        subSum = subSum + finalOpenElective;
+                        subCount = subCount + 1;
+                        creditSum = creditSum + 3;
                         setState(() {
-                          cgpa = subsum / creditsum;
-                          subsum = 0.0;
-                          creditsum = 0.0;
+                          cgpa = subSum / creditSum;
+                          subSum = 0.0;
+                          creditSum = 0.0;
                         });
                       }
                       if (widget.honor == true && widget.oe == true) {
                         credit.forEach((element) {
-                          creditsum += element;
+                          creditSum += element;
                         });
-                        print(creditsum);
+                        print(creditSum);
                         score.forEach((element) {
                           if (element == 1.0) {
                             print("null");
                           } else {
-                            subsum = subsum + element;
-                            subcount += 1;
+                            subSum = subSum + element;
+                            subCount += 1;
                           }
                         });
-                        print("subsum at start  $subsum");
-                        finalhonour = honor * 4;
-                        subsum = subsum + finalhonour;
-                        subcount = subcount + 1;
-                        creditsum = creditsum + 4;
-                        finaloe = openelective * 3;
-                        subsum = subsum + finaloe;
-                        subcount = subcount + 1;
-                        creditsum = creditsum + 3;
+                        print("subsum at start  $subSum");
+                        finalHonour = honor * 4;
+                        subSum = subSum + finalHonour;
+                        subCount = subCount + 1;
+                        creditSum = creditSum + 4;
+                        finalOpenElective = openElective * 3;
+                        subSum = subSum + finalOpenElective;
+                        subCount = subCount + 1;
+                        creditSum = creditSum + 3;
                         setState(() {
-                          cgpa = subsum / creditsum;
+                          cgpa = subSum / creditSum;
 
-                          subsum = 0.0;
-                          creditsum = 0.0;
+                          subSum = 0.0;
+                          creditSum = 0.0;
                         });
                       }
 

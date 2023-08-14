@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class GradeSelection extends StatefulWidget {
-  const GradeSelection({Key key}) : super(key: key);
-
   @override
   _GradeSelectionState createState() => _GradeSelectionState();
 }

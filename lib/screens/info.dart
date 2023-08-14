@@ -11,7 +11,7 @@ class Info extends StatefulWidget {
 }
 
 class _InfoState extends State<Info> {
-  BannerAd bannerAd;
+  BannerAd? bannerAd;
   bool bannerAdLoaded = false;
 
   @override
@@ -33,12 +33,12 @@ class _InfoState extends State<Info> {
           });
         },
         onAdFailedToLoad: (ad, error) {
-          bannerAd.dispose();
+          bannerAd!.dispose();
         },
       ),
     );
 
-    bannerAd.load();
+    bannerAd!.load();
   }
 
   @override
@@ -154,10 +154,10 @@ class _InfoState extends State<Info> {
       ),
       bottomNavigationBar: bannerAdLoaded
           ? Container(
-              width: bannerAd.size.width.toDouble(),
-              height: bannerAd.size.height.toDouble(),
+              width: bannerAd!.size.width.toDouble(),
+              height: bannerAd!.size.height.toDouble(),
               child: AdWidget(
-                ad: bannerAd,
+                ad: bannerAd!,
               ),
             )
           : null,

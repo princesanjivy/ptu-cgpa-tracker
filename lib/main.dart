@@ -38,8 +38,8 @@ class _MyAppState extends State<MyApp> {
   getData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
-      showIntro = sharedPreferences.get("showIntro") ?? true;
-      showOnBoard = sharedPreferences.get("showOnBoard") ?? true;
+      showIntro = sharedPreferences.getBool("showIntro") ?? true;
+      showOnBoard = sharedPreferences.getBool("showOnBoard") ?? true;
     });
   }
 
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black87,
         textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Raleway'),
-        accentColor: Colors.deepOrangeAccent,
+        hintColor: Colors.deepOrangeAccent,
         checkboxTheme: CheckboxThemeData(
           fillColor: MaterialStateColor.resolveWith(
             (states) {
