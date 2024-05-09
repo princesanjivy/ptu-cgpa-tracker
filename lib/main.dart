@@ -8,11 +8,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  MobileAds.instance.updateRequestConfiguration(
-    RequestConfiguration(
-      testDeviceIds: ["9FBCA2E78F5A517434325B6CF857A926"],
-    ),
-  );
+  // MobileAds.instance.updateRequestConfiguration(
+  //   RequestConfiguration(
+  //     testDeviceIds: ["9FBCA2E78F5A517434325B6CF857A926"],
+  //   ),
+  // );
   MobileAds.instance.initialize();
   await Firebase.initializeApp();
 
