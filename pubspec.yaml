@@ -1,7 +1,7 @@
 name: ptu_cgpa_tracker
 description: CGPA calculator and tracker for PTU students
 
-version: 1.0.2+3
+version: 1.0.3+4
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

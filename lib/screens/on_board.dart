@@ -323,8 +323,6 @@ class _OnBoardState extends State<OnBoard> {
             padding: EdgeInsets.all(32),
             child: InkWell(
               onTap: () {
-                showInterstitialAd();
-
                 if (widget.fromHome) {
                   Navigator.pop(context);
                 } else {

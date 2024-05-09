@@ -298,15 +298,11 @@ class _HomeState extends State<Home> {
                   ),
                   MyCustomCard(
                     onTap: () {
-                      Navigator.of(context)
-                          .push(
+                      Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => AboutUs(),
                         ),
-                      )
-                          .then((value) {
-                        showInterstitialAd();
-                      });
+                      );
                     },
                     tag: "aboutUs",
                     title: "Developers",
@@ -314,17 +310,13 @@ class _HomeState extends State<Home> {
                   ),
                   MyCustomCard(
                     onTap: () {
-                      Navigator.of(context)
-                          .push(
+                      Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => Intro(
                             viewIntro: true,
                           ),
                         ),
-                      )
-                          .then((value) {
-                        showInterstitialAd();
-                      });
+                      );
                     },
                     tag: "appIntro",
                     title: "App Intro",
@@ -332,15 +324,11 @@ class _HomeState extends State<Home> {
                   ),
                   MyCustomCard(
                     onTap: () {
-                      Navigator.of(context)
-                          .push(
+                      Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => Info(),
                         ),
-                      )
-                          .then((value) {
-                        showInterstitialAd();
-                      });
+                      );
                     },
                     tag: "aboutApp",
                     title: "About App",
